@@ -1,0 +1,12 @@
+Args: "--task", "SRG_TO_MCP", "--input", "C:\Users\lezly\.gradle\caches\modules-2\files-2.1\mezz.jei\jei-1.16.4\7.6.0.62\153ba78db1142db5dd0b4e3a5cd10ab9d2141f45\jei-1.16.4-7.6.0.62.jar", "--output", "C:\Users\lezly\.gradle\caches\forge_gradle\deobf_dependencies\mezz\jei\jei-1.16.4\7.6.0.62_mapped_snapshot_20201028-1.16.3\jei-1.16.4-7.6.0.62_mapped_snapshot_20201028-1.16.3.jar", "--mcp", "C:\Users\lezly\.gradle\caches\forge_gradle\maven_downloader\de\oceanlabs\mcp\mcp_snapshot\20201028-1.16.3\mcp_snapshot-20201028-1.16.3.zip", "--strip-signatures"
+Classpath: C:\Users\lezly\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\installertools\1.1.10\installertools-1.1.10-fatjar.jar
+WorkDir: E:\MT\MINECRAFT\MT MODS\Garden Arsenal\GardenArsenalForgeTry\build\_RenameSrg2Mcp_-99165616
+Main: net.minecraftforge.installertools.ConsoleTool
+====================================
+Task: SRG_TO_MCP
+Input:  C:\Users\lezly\.gradle\caches\modules-2\files-2.1\mezz.jei\jei-1.16.4\7.6.0.62\153ba78db1142db5dd0b4e3a5cd10ab9d2141f45\jei-1.16.4-7.6.0.62.jar
+Output: C:\Users\lezly\.gradle\caches\forge_gradle\deobf_dependencies\mezz\jei\jei-1.16.4\7.6.0.62_mapped_snapshot_20201028-1.16.3\jei-1.16.4-7.6.0.62_mapped_snapshot_20201028-1.16.3.jar
+MCP:    C:\Users\lezly\.gradle\caches\forge_gradle\maven_downloader\de\oceanlabs\mcp\mcp_snapshot\20201028-1.16.3\mcp_snapshot-20201028-1.16.3.zip
+Loading MCP Data
+Stripped Manifest of sha digests
+Process complete

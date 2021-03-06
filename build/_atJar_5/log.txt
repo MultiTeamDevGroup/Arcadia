@@ -1,0 +1,5 @@
+Args: "--inJar", "E:\MT\MINECRAFT\MT MODS\Garden Arsenal\GardenArsenal\GardenArsenalForgeTry\build\fg_cache\net\minecraftforge\forge\1.16.4-35.1.37\forge-1.16.4-35.1.37-injected.jar", "--outJar", "E:\MT\MINECRAFT\MT MODS\Garden Arsenal\GardenArsenal\GardenArsenalForgeTry\build\fg_cache\net\minecraftforge\forge\1.16.4-35.1.37_mapped_snapshot_20201028-1.16.3\forge-1.16.4-35.1.37_mapped_snapshot_20201028-1.16.3.jar", "--logFile", "accesstransform.log", "--atFile", "E:\MT\MINECRAFT\MT MODS\Garden Arsenal\GardenArsenal\GardenArsenalForgeTry\src\main\resources\META-INF\accesstransformer.cfg", "--atFile", "E:\MT\MINECRAFT\MT MODS\Garden Arsenal\GardenArsenal\GardenArsenalForgeTry\build\_atJar_5\parent_at.cfg"
+Classpath: C:\Users\lezly\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\accesstransformers\1.0.5\accesstransformers-1.0.5-fatjar.jar
+WorkDir: E:\MT\MINECRAFT\MT MODS\Garden Arsenal\GardenArsenal\GardenArsenalForgeTry\build\_atJar_5
+Main: net.minecraftforge.accesstransformer.TransformerProcessor
+====================================

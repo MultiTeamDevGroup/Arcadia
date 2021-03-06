@@ -1,0 +1,34 @@
+
+#These options affect only the client that loads the mod.
+[clientOnly]
+	#Disable the Autosave system Tabula has (I don't know why you'd do that though)
+	disableAutosaves = true
+	#Should the block in the workspace be rendered
+	renderWorkspaceBlock = true
+	#How big should the workspace grid be?
+	#Range: 4.9E-324 ~ 1.7976931348623157E308
+	workspaceGridSize = 7.25
+	#Should the grid in the workspace be rendered
+	renderWorkspaceGrid = true
+	#Max decimals in number input boxes
+	#Range: 0 ~ 10
+	guiMaxDecimals = 2
+	#Force a GUI scale when entering the Tabula screen. Follows MC's GUI Scale, -1 disables, 0 is auto
+	#Range: -1 ~ 8
+	forceGuiScale = 2
+	#Try to animate the possibly imported models to fix their rotations?
+	animateImports = true
+	#If you open old Tabula files (pre 1.15), it pops up a warning. This disables that.
+	ignoreOldTabulaWarning = false
+	#Maximum Undo States. More Undo states = More Memory Use
+	#Range: 0 ~ 200
+	maximumUndoStates = 40
+
+[multiplayer]
+	#Allow anyone who connects to your Tabula session to edit the model
+	allowEveryoneToEdit = true
+	#Enable chat sounds?
+	chatSound = true
+	#People allowed to edit models in your multiplayer Tabula session.\nSeparate usernames by with a comma and a space (", " - no quotes)
+	editors = []
+
