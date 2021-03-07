@@ -3,6 +3,8 @@ package multiteam.arcadia;
 import multiteam.arcadia.setup.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -54,6 +56,7 @@ public class ArcadiaMod {
     private void doClientStuff(final FMLClientSetupEvent event) {
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 
+        RenderTypeLookup.setRenderLayer(ModBlocks.CLOUD_BLOCK.get(), RenderType.getTranslucent());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

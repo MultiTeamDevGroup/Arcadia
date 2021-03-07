@@ -24,7 +24,10 @@ minecraft {
     mappings channel: 'snapshot', version: '20201028-1.16.3'
 
     runs {
+
         client {
+            jvmArgs '-Dmixin.env.disableRefMap=true'
+
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
@@ -32,15 +35,18 @@ minecraft {
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
+            property 'forge.logging.console.level', 'debug'
 
             mods {
-                gardenarsenal {
+                arcadia {
                     source sourceSets.main
                 }
             }
         }
 
         server {
+            jvmArgs '-Dmixin.env.disableRefMap=true'
+
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
@@ -50,13 +56,14 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                gardenarsenal {
+                arcadia {
                     source sourceSets.main
                 }
             }
         }
 
         data {
+            jvmArgs '-Dmixin.env.disableRefMap=true'
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
@@ -93,7 +100,11 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.62:api")
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.62")
 
+    runtimeOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:1.16.4-2.1.0.0")
+    compileOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:1.16.4-2.1.0.0")
+
     implementation fg.deobf("curse.maven:TestDummy-225738:3083395")
+
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
@@ -142,4 +153,5 @@ repositories {
     maven {
         url "https://www.cursemaven.com"
     }
+    maven { url = "https://maven.theillusivec4.top/" }
 }

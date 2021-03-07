@@ -1,0 +1,33 @@
+{
+  "scale": 0.05,
+  "effects": {
+    "sky_color": 14740479,
+    "fog_color": 14411519,
+    "water_color": 3044607,
+    "water_fog_color": 1508659,
+    "grass_color": 2154399,
+    "foliage_color": 9367750
+  },
+  "surface_builder": "arcadia:cloudy_skies",
+  "carvers": {
+    "air": [
+      "minecraft:cave"
+    ]
+  },
+  "features": [],
+  "starts": [],
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "precipitation": "none",
+  "temperature": 0.8,
+  "downfall": 0.4,
+  "category": "cloud_realm",
+  "depth": 1
+}
