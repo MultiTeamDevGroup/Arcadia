@@ -29,7 +29,7 @@ public class ArcadiaMod {
     public static final String MOD_ID = "arcadia";
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public static final ModItemGroup ARCADIA_TAB = new ModItemGroup("arcadia_tab", () -> new ItemStack(Items.CARROT));
+    public static final ModItemGroup ARCADIA_TAB = new ModItemGroup("arcadia_tab", () -> new ItemStack(ModItems.ANGEL_WINGS.get()));
     //public static final ModItemGroup GARDEN_ARSENAL_MISC_TAB = new ModItemGroup("garden_arsenal_misc_tab", () -> new ItemStack(Items.SUGAR_CANE));
 
     public ArcadiaMod() {

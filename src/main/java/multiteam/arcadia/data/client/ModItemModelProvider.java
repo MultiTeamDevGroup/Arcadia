@@ -8,6 +8,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import multiteam.arcadia.ArcadiaMod;
 
 public class ModItemModelProvider extends ItemModelProvider {
+
     public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper){
         super(generator, ArcadiaMod.MOD_ID, existingFileHelper);
     }
@@ -18,8 +19,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
 
-        //EXAMPLE GENERATED MODEL
-        // builder(itemGenerated, "iron_rod");
+        builder(itemGenerated, "angel_wings");
     }
 
     private ItemModelBuilder builder(ModelFile itemGenerated, String name) {
