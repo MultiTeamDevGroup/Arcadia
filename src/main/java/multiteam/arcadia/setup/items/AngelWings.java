@@ -1,74 +1,95 @@
 package multiteam.arcadia.setup.items;
 
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
-import net.minecraft.entity.player.PlayerEntity;
+import multiteam.arcadia.ArcadiaMod;
+import multiteam.arcadia.setup.ModItems;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
+import net.minecraft.client.renderer.entity.IEntityRenderer;
+import net.minecraft.client.renderer.entity.layers.ElytraLayer;
+import net.minecraft.client.renderer.entity.model.PlayerModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
-import top.theillusivec4.caelus.Caelus;
-import top.theillusivec4.caelus.api.CaelusApi;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
-public class AngelWings extends ElytraItem {
+@Mod(ArcadiaMod.MOD_ID)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = ArcadiaMod.MOD_ID)
+public class AngelWings {
 
-    public AngelWings(Properties builder) {
-        super(builder);
+    public static void onClientSetup(FMLClientSetupEvent event)
+    {
+        registerElytraLayer();
     }
 
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
-        tooltip.add(new TranslationTextComponent("tooltip.arcadia.angel_wing_description").copyRaw().mergeStyle(TextFormatting.YELLOW));
+    @OnlyIn(Dist.CLIENT)
+    public static void registerElytraLayer()
+    {
+        Minecraft.getInstance().getRenderManager().getSkinMap().values().forEach(player -> player.addLayer(new CustomElytraLayer(player)));
     }
 
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Items.FEATHER;
-    }
-/**
-    public void onEquip(String identifier, int index, LivingEntity entityLivingBase) {
-        ModifiableAttributeInstance attributeInstance = entityLivingBase.getAttribute(CaelusApi.ELYTRA_FLIGHT.get());
+    public static class AngelWings_ extends Item
+    {
 
-        if (attributeInstance != null && !attributeInstance.hasModifier(ELYTRA_CURIO_MODIFIER) && CaelusApi.canElytraFly(entityLivingBase, this.stack)) {
-            attributeInstance.applyNonPersistentModifier(ELYTRA_CURIO_MODIFIER);
+        public AngelWings_(Properties properties)
+        {
+            super(properties);
+            DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
         }
-    }**/
 
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        ItemStack itemstack = playerIn.getHeldItem(handIn);
-        EquipmentSlotType equipmentslottype = MobEntity.getSlotForItemStack(itemstack);
-        ItemStack itemstack1 = playerIn.getItemStackFromSlot(equipmentslottype);
-        if (itemstack1.isEmpty()) {
-            playerIn.setItemStackToSlot(equipmentslottype, itemstack.copy());
-            itemstack.setCount(0);
-            ModifiableAttributeInstance attributeInstance = playerIn.getAttribute(CaelusApi.ELYTRA_FLIGHT.get());
-            attributeInstance.applyNonPersistentModifier(CaelusApi.ELYTRA_MODIFIER);
-            return ActionResult.func_233538_a_(itemstack, worldIn.isRemote());
-        } else {
-            return ActionResult.resultFail(itemstack);
+        @Nullable
+        @Override
+        public EquipmentSlotType getEquipmentSlot(ItemStack stack)
+        {
+            return EquipmentSlotType.CHEST; //Or you could just extend ItemArmor
+        }
+
+        @Override
+        public boolean canElytraFly(ItemStack stack, LivingEntity entity)
+        {
+            return true;
+        }
+
+        @Override
+        public boolean elytraFlightTick(ItemStack stack, LivingEntity entity, int flightTicks)
+        {
+            //Adding 1 to ticksElytraFlying prevents damage on the very first tick.
+            if (!entity.world.isRemote && (flightTicks + 1) % 20 == 0)
+            {
+                stack.damageItem(1, entity, e -> e.sendBreakAnimation(EquipmentSlotType.CHEST));
+            }
+            return true;
         }
     }
 
-    @Override
-    public boolean canElytraFly(ItemStack stack, net.minecraft.entity.LivingEntity entity) {
-        return ElytraItem.isUsable(stack);
-    }
+    @OnlyIn(Dist.CLIENT)
+    public static class CustomElytraLayer extends ElytraLayer<AbstractClientPlayerEntity, PlayerModel<AbstractClientPlayerEntity>>
+    {
+        public static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation(ArcadiaMod.MOD_ID, "textures/entity/angel_wings.png");
 
-    @Override
-    public boolean elytraFlightTick(ItemStack stack, net.minecraft.entity.LivingEntity entity, int flightTicks) {
-        if (!entity.world.isRemote && (flightTicks + 1) % 20 == 0) {
-            stack.damageItem(1, entity, e -> e.sendBreakAnimation(net.minecraft.inventory.EquipmentSlotType.CHEST));
+        public CustomElytraLayer(IEntityRenderer<AbstractClientPlayerEntity, PlayerModel<AbstractClientPlayerEntity>> rendererIn)
+        {
+            super(rendererIn);
         }
-        return true;
+
+        @Override
+        public boolean shouldRender(ItemStack stack, AbstractClientPlayerEntity entity)
+        {
+
+            return stack.getItem() == ModItems.ANGEL_WINGS.get();
+        }
+
+        @Override
+        public ResourceLocation getElytraTexture(ItemStack stack, AbstractClientPlayerEntity entity)
+        {
+            return TEXTURE_ELYTRA;
+        }
     }
 
 }
