@@ -58,6 +58,7 @@ public class ArcadiaMod {
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 
         RenderTypeLookup.setRenderLayer(ModBlocks.CLOUD_BLOCK.get(), RenderType.getTranslucent());
+        RenderTypeLookup.setRenderLayer(ModBlocks.STORMY_CLOUD_BLOCK.get(), RenderType.getTranslucent());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

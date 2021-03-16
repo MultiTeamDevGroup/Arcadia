@@ -4,20 +4,35 @@ import multiteam.arcadia.ArcadiaMod;
 import multiteam.arcadia.setup.blocks.CloudBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 
 import java.util.function.Supplier;
 
 public class ModBlocks {
 
+    //CUSTOM MATERIALS
     public static final Material CLOUD = (new Material(MaterialColor.AIR, false, false, false, false, false, false, Material.ICE.getPushReaction()));
 
-    public static final RegistryObject<Block> CLOUD_BLOCK = register("cloud_block", () -> new CloudBlock(AbstractBlock.Properties.create(CLOUD).hardnessAndResistance(0, 0).harvestLevel(2).sound(SoundType.CLOTH).notSolid().setEmmisiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true)));
+    //CLOUDS
+    public static final RegistryObject<Block> CLOUD_BLOCK = register("cloud_block", () -> new CloudBlock(AbstractBlock.Properties.create(CLOUD).hardnessAndResistance(0, 0).harvestLevel(0).sound(SoundType.CLOTH).notSolid().setEmmisiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true)));
+    public static final RegistryObject<Block> STORMY_CLOUD_BLOCK = register("stormy_cloud_block", () -> new CloudBlock(AbstractBlock.Properties.create(CLOUD).hardnessAndResistance(0, 0).harvestLevel(0).sound(SoundType.CLOTH).notSolid().setEmmisiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true)));
+
+    //STONES
+    public static final RegistryObject<Block> DEUS_ROCK = register("deus_rock", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> DEUS_ROCK_POLISHED = register("polished_deus_rock", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> DEUS_ROCK_TILES = register("deus_rock_tiles", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> DEUS_ROCK_GILDED_TILES = register("deus_rock_gilded_tiles", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+
+    public static final RegistryObject<Block> SILVER_STONE = register("silver_stone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> SILVER_STONE_GRASSY = register("grassy_silver_stone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
 
 
     static void register() {}

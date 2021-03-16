@@ -5,6 +5,13 @@
 
   "MOD BLOCKS": "BLOCKS",
   "block.arcadia.cloud_block": "Cloud Block",
+  "block.arcadia.stormy_cloud_block": "Stormy Cloud Block",
+  "block.arcadia.deus_rock": "Deus Rock",
+  "block.arcadia.polished_deus_rock": "Polished Deus Rock",
+  "block.arcadia.deus_rock_tiles": "Deus Rock Tiles",
+  "block.arcadia.deus_rock_gilded_tiles": "Gilded Deus Rock TIles",
+  "block.arcadia.silver_stone": "Silver Stone",
+  "block.arcadia.grassy_silver_stone": "Grassy Silver Stone",
 
   "MOD MISC": "MISC",
   "itemGroup.arcadia_tab": "Arcadia"

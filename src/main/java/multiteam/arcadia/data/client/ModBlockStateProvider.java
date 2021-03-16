@@ -14,5 +14,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void  registerStatesAndModels() {
         simpleBlock(ModBlocks.CLOUD_BLOCK.get());
+        simpleBlock(ModBlocks.STORMY_CLOUD_BLOCK.get());
+
+        simpleBlock(ModBlocks.DEUS_ROCK.get());
+        simpleBlock(ModBlocks.DEUS_ROCK_POLISHED.get());
+        simpleBlock(ModBlocks.DEUS_ROCK_TILES.get());
+        simpleBlock(ModBlocks.DEUS_ROCK_GILDED_TILES.get());
+
+        simpleBlock(ModBlocks.SILVER_STONE.get());
     }
 }
