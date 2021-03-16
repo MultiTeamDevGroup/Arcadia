@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#G#",
+        "FEF",
+        "F F"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:slime_ball"
+        },
+        "G": {
+            "item": "minecraft:glowstone_dust"
+        },
+        "F": {
+            "item": "minecraft:feather"
+        },
+        "E": {
+            "item": "minecraft:elytra"
+        }
+    },
+    "result": {
+        "item": "arcadia:angel_wings",
+        "count": 1
+    }
+}

@@ -2,6 +2,7 @@ package multiteam.arcadia.setup;
 
 import multiteam.arcadia.ArcadiaMod;
 import multiteam.arcadia.setup.blocks.CloudBlock;
+import multiteam.arcadia.setup.blocks.StormyCloudBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -23,7 +24,7 @@ public class ModBlocks {
 
     //CLOUDS
     public static final RegistryObject<Block> CLOUD_BLOCK = register("cloud_block", () -> new CloudBlock(AbstractBlock.Properties.create(CLOUD).hardnessAndResistance(0, 0).harvestLevel(0).sound(SoundType.CLOTH).notSolid().setEmmisiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true)));
-    public static final RegistryObject<Block> STORMY_CLOUD_BLOCK = register("stormy_cloud_block", () -> new CloudBlock(AbstractBlock.Properties.create(CLOUD).hardnessAndResistance(0, 0).harvestLevel(0).sound(SoundType.CLOTH).notSolid().setEmmisiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true)));
+    public static final RegistryObject<Block> STORMY_CLOUD_BLOCK = register("stormy_cloud_block", () -> new StormyCloudBlock(AbstractBlock.Properties.create(CLOUD).hardnessAndResistance(0, 0).harvestLevel(0).sound(SoundType.CLOTH).notSolid().setEmmisiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true)));
 
     //STONES
     public static final RegistryObject<Block> DEUS_ROCK = register("deus_rock", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
@@ -33,6 +34,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SILVER_STONE = register("silver_stone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
     public static final RegistryObject<Block> SILVER_STONE_GRASSY = register("grassy_silver_stone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> SILVER_COBBLESTONE = register("silver_cobblestone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
 
 
     static void register() {}
