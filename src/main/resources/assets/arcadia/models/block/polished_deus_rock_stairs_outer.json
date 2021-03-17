@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/outer_stairs",
+    "textures": {
+        "bottom": "arcadia:block/polished_deus_rock",
+        "top": "arcadia:block/polished_deus_rock",
+        "side": "arcadia:block/polished_deus_rock"
+    }
+}

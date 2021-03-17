@@ -8,7 +8,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
-@OnlyIn(Dist.CLIENT)
 public class CloudPoofParticle extends SpriteTexturedParticle {
 
     protected CloudPoofParticle(ClientWorld world, double x, double y, double z) {
