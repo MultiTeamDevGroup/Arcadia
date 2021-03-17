@@ -27,7 +27,7 @@ displayName="Arcadia" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="arcadia.png" #optional
+logoFile="arcadia_logo_transparent.png" #optional
 # A text field displayed in the mod UI
 credits="A mod made by MultiTeam" #optional
 # A text field displayed in the mod UI
