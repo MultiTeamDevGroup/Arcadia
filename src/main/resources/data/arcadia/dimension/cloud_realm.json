@@ -1,61 +1,6 @@
 {
-  "type": "arcadia:cloud_realm_type",
+  "type": "arcadia:cloud_realm",
   "generator": {
-    "type": "minecraft:noise",
-    "seed": 1774938843,
-    "biome_source": {
-      "type": "minecraft:fixed",
-      "seed": 1774938843,
-      "biome": "arcadia:cloudy_skies"
-    },
-    "settings": {
-      "name": "arcadia:cloud_realm",
-      "bedrock_roof_position": 0,
-      "bedrock_floor_position": 0,
-      "sea_level": 63,
-      "disable_mob_generation": true,
-      "default_block": {
-        "Name": "arcadia:cloud_block"
-      },
-      "default_fluid": {
-        "Name": "minecraft:air"
-      },
-      "noise": {
-        "height": 256,
-        "density_factor": 0.01,
-        "density_offset": 0,
-        "size_horizontal": 1,
-        "size_vertical": 1,
-        "simplex_surface_noise": true,
-        "random_density_offset": true,
-        "island_noise_override": true,
-        "amplified": false,
-        "sampling": {
-          "xz_scale": 1,
-          "y_scale": 1,
-          "xz_factor": 80,
-          "y_factor": 160
-        },
-        "bottom_slide": {
-          "target": -30,
-          "size": 0,
-          "offset": 0
-        },
-        "top_slide": {
-          "target": -10,
-          "size": 3,
-          "offset": 0
-        }
-      },
-      "structures": {
-        "structures": {
-          "minecraft:buried_treasure": {
-            "spacing": 10,
-            "separation": 5,
-            "salt": 0
-          }
-        }
-      }
-    }
+    "type": "arcadia:chunkgen"
   }
 }

@@ -2,6 +2,8 @@ package multiteam.arcadia.setup.items;
 
 import multiteam.arcadia.ArcadiaMod;
 import multiteam.arcadia.setup.ModItems;
+import multiteam.arcadia.setup.util.TeleportationTools;
+import multiteam.arcadia.setup.world.dimensions.ModDimensions;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.Minecraft;
@@ -12,13 +14,16 @@ import net.minecraft.client.renderer.entity.model.PlayerModel;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.Dimension;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.Mod;
@@ -77,6 +82,7 @@ public class AngelWings {
             return true;
         }
 
+
         @Override
         public boolean elytraFlightTick(ItemStack stack, LivingEntity entity, int flightTicks)
         {
@@ -94,7 +100,12 @@ public class AngelWings {
             if(entity instanceof PlayerEntity){
                 PlayerEntity playerE = (PlayerEntity) entity.getEntity();
                 if(entity.getPosition().getY() >= 300 && playerE.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ModItems.ANGEL_WINGS.get() && playerE.world.getDimensionKey() == World.OVERWORLD){
-                    playerE.sendStatusMessage(new TranslationTextComponent("message.arcadia.action_bar.entering_dimension"), true);
+                    // this is how you send something to the plaayer's eaction bar:
+                    // playerE.sendStatusMessage(new TranslationTextComponent("message.arcadia.action_bar.entering_dimension"), true);
+
+                    ServerWorld destWorld = playerE.getServer().getWorld(ModDimensions.CLOUD_REALM);
+                    ServerPlayerEntity serverPlayer = (ServerPlayerEntity) playerE;
+                    TeleportationTools.teleport(serverPlayer, destWorld, new BlockPos(serverPlayer.getPosition().getX(), 30, serverPlayer.getPosition().getY()));
                 }
             }
 

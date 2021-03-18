@@ -2,12 +2,16 @@ package multiteam.arcadia;
 
 import multiteam.arcadia.setup.*;
 import multiteam.arcadia.setup.items.AngelWings;
+import multiteam.arcadia.setup.world.dimensions.CloudRealmChunkGenerator;
+import multiteam.arcadia.setup.world.dimensions.ModBiomeProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -45,6 +49,9 @@ public class ArcadiaMod {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(AngelWings::onClientSetup);
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
+
+        Registry.register(Registry.CHUNK_GENERATOR_CODEC, new ResourceLocation(MOD_ID, "chunkgen"),CloudRealmChunkGenerator.CODEC);
+        Registry.register(Registry.BIOME_PROVIDER_CODEC, new ResourceLocation(MOD_ID, "biomes"),ModBiomeProvider.CODEC);
 
     }
 
