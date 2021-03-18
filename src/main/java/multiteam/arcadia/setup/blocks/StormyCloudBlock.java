@@ -15,8 +15,7 @@ public class StormyCloudBlock extends CloudBlock {
         super(properties);
     }
 
-    @Override
-    public void poofOutofExistance(World worldIn, BlockPos pos, Boolean causedbyfall){
+    public void poofOutOfExistence(World worldIn, BlockPos pos, Boolean causedbyfall){
         worldIn.playSound((PlayerEntity)null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_WOOL_BREAK, SoundCategory.BLOCKS, 0.5F, 0.4F );
         LightningBoltEntity lightning = new LightningBoltEntity(EntityType.LIGHTNING_BOLT, worldIn);
         lightning.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), 0, 0.0F);

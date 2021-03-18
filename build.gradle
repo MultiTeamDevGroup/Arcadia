@@ -95,13 +95,10 @@ sourceSets.main.resources {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.37'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
 
-    compileOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.62:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.62")
-
-    runtimeOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:1.16.4-2.1.0.0")
-    compileOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:1.16.4-2.1.0.0")
+    compileOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.1.73:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.1.73")
 
     implementation fg.deobf("curse.maven:TestDummy-225738:3083395")
 

@@ -11,7 +11,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -39,15 +38,15 @@ public class CloudBlock extends Block {
 
     @Override
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-        poofOutofExistance(worldIn, pos, false);
+        poofOutOfExistence(worldIn, pos, false);
     }
 
     @Override
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-        poofOutofExistance(worldIn, pos, true);
+        poofOutOfExistence(worldIn, pos, true);
     }
 
-    public void poofOutofExistance(World worldIn, BlockPos pos, Boolean causedbyfall){
+    public void poofOutOfExistence(World worldIn, BlockPos pos, Boolean causedbyfall){
         worldIn.playSound((PlayerEntity)null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_WOOL_BREAK, SoundCategory.BLOCKS, 0.5F, 0.4F );
         double posx = (double)pos.getX()+0.0D;
         double posy = (double)pos.getY()+0.0D;
