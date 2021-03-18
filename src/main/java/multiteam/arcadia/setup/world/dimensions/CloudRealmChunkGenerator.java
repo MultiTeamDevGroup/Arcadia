@@ -2,9 +2,7 @@ package multiteam.arcadia.setup.world.dimensions;
 
 import com.mojang.serialization.Codec;
 import multiteam.arcadia.setup.ModBlocks;
-import multiteam.arcadia.setup.util.FastNoiseLite;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.registry.Registry;
