@@ -16,28 +16,28 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class Registration {
 
+    public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, ArcadiaMod.MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ArcadiaMod.MOD_ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ArcadiaMod.MOD_ID);
     public static final DeferredRegister<PaintingType> PAINTINGS = DeferredRegister.create(ForgeRegistries.PAINTING_TYPES, ArcadiaMod.MOD_ID);
     public static final DeferredRegister<VillagerProfession> PROFESSIONS = DeferredRegister.create(ForgeRegistries.PROFESSIONS, ArcadiaMod.MOD_ID);
     public static final DeferredRegister<PointOfInterestType> POI_TYPES = DeferredRegister.create(ForgeRegistries.POI_TYPES, ArcadiaMod.MOD_ID);
-    public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, ArcadiaMod.MOD_ID);
 
 
     public static void register() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        PARTICLES.register(modEventBus);
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
         PAINTINGS.register(modEventBus);
         PROFESSIONS.register(modEventBus);
         POI_TYPES.register(modEventBus);
-        PARTICLES.register(modEventBus);
 
+        ParticleList.register();
         ModBlocks.register();
         ModItems.register();
         ModPaintings.register();
         VillagerProfessions.register();
         PointOfInterests.register();
-        ParticleList.register();
     }
 }
