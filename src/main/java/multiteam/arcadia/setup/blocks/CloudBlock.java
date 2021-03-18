@@ -3,11 +3,12 @@ package multiteam.arcadia.setup.blocks;
 import multiteam.arcadia.setup.entitys.particles.ParticleList;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class CloudBlock extends Block {
 
@@ -16,8 +17,17 @@ public class CloudBlock extends Block {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
+        poofOutofExistance(worldIn, pos, false);
+    }
+
+    @Override
+    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
+        poofOutofExistance(worldIn, pos, true);
+    }
+
+    public void poofOutofExistance(World worldIn, BlockPos pos, Boolean causedbyfall){
+        worldIn.playSound((PlayerEntity)null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_WOOL_BREAK, SoundCategory.BLOCKS, 0.5F, 0.4F );
         double posx = (double)pos.getX()+0.0D;
         double posy = (double)pos.getY()+0.0D;
         double posz = (double)pos.getZ()+0.0D;
@@ -33,6 +43,10 @@ public class CloudBlock extends Block {
                 y+=0.2f;
             }
             x+=0.2f;
+        }
+
+        if(causedbyfall && !worldIn.isRemote){
+            worldIn.destroyBlock(pos, false, null, 0);
         }
 
     }

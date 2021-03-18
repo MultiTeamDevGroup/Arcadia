@@ -7,22 +7,23 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class CloudPoofParticle extends SpriteTexturedParticle {
 
     protected CloudPoofParticle(ClientWorld world, double x, double y, double z) {
         super(world, x, y, z);
 
-        float f = this.rand.nextFloat() * 1.0f;
+        float f = this.rand.nextFloat();
         this.particleRed = f;
         this.particleGreen = f;
         this.particleBlue = f;
         this.setSize(0.02f,0.02f);
         this.particleScale *= this.rand.nextFloat()*1.1f;
-        this.motionX *= (double)0.2f;
-        this.motionY *= (double)0.2f;
-        this.motionZ *= (double)0.2f;
-        this.maxAge = (int)(14.0D / (Math.random() * 1.0D));
+        this.motionX *= 0.2f;
+        this.motionY *= 0.2f;
+        this.motionZ *= 0.2f;
+        this.maxAge = (int)(20.0D / (Math.random()));
 
     }
 
@@ -39,11 +40,10 @@ public class CloudPoofParticle extends SpriteTexturedParticle {
         if(this.maxAge-- <=0){
             this.setExpired();
         }else{
+            this.motionX = this.motionX + ((Math.random() * (0.1f - -0.1f)) + -0.1f);//Math.random() * (max - min) + min
+            this.motionY = this.motionY + ((Math.random() * (0.03f - 0f)) + 0f);
+            this.motionZ = this.motionZ + ((Math.random() * (0.1f - -0.1f)) + -0.1f);
             this.move(this.motionX, this.motionY, this.motionZ);
-            this.motionX *=1.0D;
-            this.motionY *=1.0D;
-            this.motionZ *=1.0D;
-
         }
     }
 
