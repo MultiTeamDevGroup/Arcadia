@@ -23,5 +23,6 @@
   "block.arcadia.silver_cobblestone": "Silver Cobblestone",
 
   "MOD MISC": "MISC",
-  "itemGroup.arcadia_tab": "Arcadia"
+  "itemGroup.arcadia_tab": "Arcadia",
+  "message.arcadia.action_bar.entering_dimension": "Entering Dimension - Cloud Realms"
 }

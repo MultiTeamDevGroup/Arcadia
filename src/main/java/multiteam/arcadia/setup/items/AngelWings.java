@@ -2,6 +2,7 @@ package multiteam.arcadia.setup.items;
 
 import multiteam.arcadia.ArcadiaMod;
 import multiteam.arcadia.setup.ModItems;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
@@ -10,6 +11,7 @@ import net.minecraft.client.renderer.entity.layers.ElytraLayer;
 import net.minecraft.client.renderer.entity.model.PlayerModel;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
@@ -40,8 +42,7 @@ public class AngelWings {
         Minecraft.getInstance().getRenderManager().getSkinMap().values().forEach(player -> player.addLayer(new CustomElytraLayer(player)));
     }
 
-    public static class AngelWings_ extends Item
-    {
+    public static class AngelWings_ extends Item {
 
         public AngelWings_(Properties properties)
         {
@@ -49,6 +50,12 @@ public class AngelWings {
             DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
         }
 
+        PlayerEntity playerE;
+
+        public int getHarvestLevel(ItemStack stack, net.minecraftforge.common.ToolType tool, @Nullable PlayerEntity player, @Nullable BlockState blockState) {
+            playerE = player;
+            return -1;
+        }
 
         public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
             super.addInformation(stack, worldIn, tooltip, flagIn);
@@ -74,10 +81,24 @@ public class AngelWings {
             //Adding 1 to ticksElytraFlying prevents damage on the very first tick.
             if (!entity.world.isRemote && (flightTicks + 1) % 20 == 0)
             {
-                stack.damageItem(1, entity, e -> e.sendBreakAnimation(EquipmentSlotType.CHEST));
+                if(entity instanceof PlayerEntity){
+                    PlayerEntity playerEntity = (PlayerEntity) entity.getEntity();
+                    if(!playerEntity.isCreative()){
+                        stack.damageItem(1, entity, e -> e.sendBreakAnimation(EquipmentSlotType.CHEST));
+                    }
+                }
             }
+
+            if(entity instanceof PlayerEntity){
+                PlayerEntity playerE = (PlayerEntity) entity.getEntity();
+                if(entity.getPosition().getY() >= 300 && playerE.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ModItems.ANGEL_WINGS.get()){
+                    playerE.sendStatusMessage(new TranslationTextComponent("message.arcadia.action_bar.entering_dimension"), true);
+                }
+            }
+
             return true;
         }
+
     }
 
     @OnlyIn(Dist.CLIENT)
