@@ -1,6 +1,8 @@
 package multiteam.arcadia.setup.world.dimensions;
 
 import com.mojang.serialization.Codec;
+import multiteam.arcadia.setup.ModBlocks;
+import multiteam.arcadia.setup.util.FastNoiseLite;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -31,10 +33,15 @@ public class CloudRealmChunkGenerator extends ChunkGenerator {
         return ((ModBiomeProvider)biomeProvider).getBiomeRegistry();
     }
 
+
     @Override
     public void generateSurface(WorldGenRegion region, IChunk chunk){
-        BlockState bedrock = Blocks.BEDROCK.getDefaultState();
-        BlockState stone = Blocks.STONE.getDefaultState();
+
+        /*BlockState bedrock = Blocks.BEDROCK.getDefaultState();
+        BlockState stone = Blocks.STONE.getDefaultState(); */
+        BlockState silverstone = ModBlocks.SILVER_STONE.get().getDefaultState();
+        BlockState silverstoneGrass = ModBlocks.SILVER_STONE_GRASSY.get().getDefaultState();
+        BlockState cloud = ModBlocks.CLOUD_BLOCK.get().getDefaultState();
         ChunkPos chunkPos = chunk.getPos();
 
         BlockPos.Mutable pos = new BlockPos.Mutable();
@@ -53,8 +60,12 @@ public class CloudRealmChunkGenerator extends ChunkGenerator {
                 int realx = chunkPos.x * 16 + x;
                 int realz = chunkPos.z * 16 + z;
                 int height = (int) (65 + Math.sin(realx / 20.0f)*10 + Math.cos(realz / 20.0f)*10);
-                for (int y = 1 ; y < height ; y++) {
-                    chunk.setBlockState(pos.setPos(x, y, z), stone, false);
+                for (int y = 1 ; y < chunk.getHeight(); y++) {
+                    if(y < height){
+                        chunk.setBlockState(pos.setPos(x, y, z), silverstone, false);
+                    }else if(y == height){
+                        chunk.setBlockState(pos.setPos(x, y, z), silverstoneGrass, false);
+                    }
                 }
             }
         }
