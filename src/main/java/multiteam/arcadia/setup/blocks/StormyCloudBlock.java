@@ -1,9 +1,6 @@
 package multiteam.arcadia.setup.blocks;
 
 import multiteam.arcadia.setup.entitys.particles.ParticleList;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,22 +9,13 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class StormyCloudBlock extends Block {
+public class StormyCloudBlock extends CloudBlock {
 
     public StormyCloudBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-        poofOutofExistance(worldIn, pos, false);
-    }
-
-    @Override
-    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-        poofOutofExistance(worldIn, pos, true);
-    }
-
     public void poofOutofExistance(World worldIn, BlockPos pos, Boolean causedbyfall){
         worldIn.playSound((PlayerEntity)null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_WOOL_BREAK, SoundCategory.BLOCKS, 0.5F, 0.4F );
         LightningBoltEntity lightning = new LightningBoltEntity(EntityType.LIGHTNING_BOLT, worldIn);
