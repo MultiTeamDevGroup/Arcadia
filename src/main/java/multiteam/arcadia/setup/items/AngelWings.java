@@ -80,6 +80,7 @@ public class AngelWings {
             return true;
         }
 
+        int cooldown;
 
         @Override
         public boolean elytraFlightTick(ItemStack stack, LivingEntity entity, int flightTicks)
@@ -95,7 +96,11 @@ public class AngelWings {
                 }
             }
 
-            if(entity instanceof PlayerEntity){
+            if(cooldown >= 0){
+                cooldown--;
+            }
+
+            if(entity instanceof PlayerEntity && cooldown <= 0){
                 PlayerEntity playerE = (PlayerEntity) entity.getEntity();
                 if(entity.getPosition().getY() >= 300 && playerE.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ModItems.ANGEL_WINGS.get() && playerE.world.getDimensionKey() == World.OVERWORLD){
                     // this is how you send something to the plaayer's eaction bar:
@@ -104,6 +109,7 @@ public class AngelWings {
                     ServerWorld destWorld = playerE.getServer().getWorld(ModDimensions.CLOUD_REALM);
                     ServerPlayerEntity serverPlayer = (ServerPlayerEntity) playerE;
                     TeleportationTools.teleport(serverPlayer, destWorld, new BlockPos(serverPlayer.getPosition().getX(), 30, serverPlayer.getPosition().getY()));
+                    cooldown = 100;
                 }
             }
 
