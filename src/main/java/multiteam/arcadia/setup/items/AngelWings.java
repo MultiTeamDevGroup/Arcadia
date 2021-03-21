@@ -2,6 +2,9 @@ package multiteam.arcadia.setup.items;
 
 import multiteam.arcadia.ArcadiaMod;
 import multiteam.arcadia.setup.ModItems;
+import multiteam.arcadia.setup.entitys.particles.CloudPoofParticle;
+import multiteam.arcadia.setup.entitys.particles.ParticleList;
+import multiteam.arcadia.setup.entitys.particles.StormyCloudPoofParticle;
 import multiteam.arcadia.setup.util.TeleportationTools;
 import multiteam.arcadia.setup.world.dimensions.ModDimensions;
 import net.minecraft.block.BlockState;
@@ -17,6 +20,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
+import net.minecraft.particles.BasicParticleType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -24,7 +28,10 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -36,15 +43,20 @@ import java.util.List;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = ArcadiaMod.MOD_ID)
 public class AngelWings {
 
+    @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event)
     {
         registerElytraLayer();
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static void registerElytraLayer()
     {
-        Minecraft.getInstance().getRenderManager().getSkinMap().values().forEach(player -> player.addLayer(new CustomElytraLayer(player)));
+            Minecraft.getInstance().getRenderManager().getSkinMap().values().forEach(player -> player.addLayer(new CustomElytraLayer(player)));
+
+    }
+
+    private static boolean checkForNonNullWithReflection(RegistryObject<Item> registryObject) {
+        return ObfuscationReflectionHelper.getPrivateValue(RegistryObject.class, registryObject, "value") != null;
     }
 
     public static class AngelWings_ extends Item {
@@ -103,7 +115,7 @@ public class AngelWings {
             if(entity instanceof PlayerEntity && cooldown <= 0){
                 PlayerEntity playerE = (PlayerEntity) entity.getEntity();
                 if(entity.getPosition().getY() >= 300 && playerE.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ModItems.ANGEL_WINGS.get() && playerE.world.getDimensionKey() == World.OVERWORLD){
-                    // this is how you send something to the plaayer's eaction bar:
+                    // this is how you send something to the plaayer's action bar:
                     // playerE.sendStatusMessage(new TranslationTextComponent("message.arcadia.action_bar.entering_dimension"), true);
 
                     ServerWorld destWorld = playerE.getServer().getWorld(ModDimensions.CLOUD_REALM);
@@ -118,7 +130,6 @@ public class AngelWings {
 
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static class CustomElytraLayer extends ElytraLayer<AbstractClientPlayerEntity, PlayerModel<AbstractClientPlayerEntity>>
     {
         public static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation(ArcadiaMod.MOD_ID, "textures/entity/angel_wings.png");
@@ -131,7 +142,6 @@ public class AngelWings {
         @Override
         public boolean shouldRender(ItemStack stack, AbstractClientPlayerEntity entity)
         {
-
             return stack.getItem() == ModItems.ANGEL_WINGS.get();
         }
 

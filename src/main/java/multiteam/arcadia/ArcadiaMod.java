@@ -9,6 +9,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -35,7 +36,7 @@ public class ArcadiaMod {
     public static final String MOD_ID = "arcadia";
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public static final ModItemGroup ARCADIA_TAB = new ModItemGroup("arcadia_tab", () -> new ItemStack(ModItems.ANGEL_WINGS.get()));
+    public static final ModItemGroup ARCADIA_TAB = new ModItemGroup("arcadia_tab", () -> new ItemStack(Items.APPLE));
     //public static final ModItemGroup GARDEN_ARSENAL_MISC_TAB = new ModItemGroup("garden_arsenal_misc_tab", () -> new ItemStack(Items.SUGAR_CANE));
 
     public ArcadiaMod() {
