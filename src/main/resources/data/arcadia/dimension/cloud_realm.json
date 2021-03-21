@@ -1,6 +1,0 @@
-{
-  "type": "arcadia:cloud_realm",
-  "generator": {
-    "type": "arcadia:chunkgen"
-  }
-}

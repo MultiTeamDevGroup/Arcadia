@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "arcadia:deus_rock"
-    },
-    "result": "arcadia:polished_deus_rock",
-    "count": 1
-}
