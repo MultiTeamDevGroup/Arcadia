@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/stairs",
+    "textures": {
+        "bottom": "arcadia:block/deus_rock_gilded_tiles",
+        "top": "arcadia:block/deus_rock_gilded_tiles",
+        "side": "arcadia:block/deus_rock_gilded_tiles"
+    }
+}

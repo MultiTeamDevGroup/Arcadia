@@ -1,0 +1,19 @@
+{
+  "MOD ITEMS": "OBJETS",
+  "item.arcadia.angel_wings": "Ailes d'ange",
+  "tooltip.arcadia.angel_wing_description": "Votre porte vers les cieux !",
+
+  "MOD BLOCKS": "BLOCS",
+  "block.arcadia.cloud_block": "Bloc de nuage",
+  "block.arcadia.stormy_cloud_block": "Bloc de nuage orageux",
+  "block.arcadia.deus_rock": "Roche divine",
+  "block.arcadia.polished_deus_rock": "Roche divine polie",
+  "block.arcadia.deus_rock_tiles": "Tuiles de roche divine",
+  "block.arcadia.deus_rock_gilded_tiles": "Tuiles de roche divine dorées",
+  "block.arcadia.silver_stone": "Roche argentée",
+  "block.arcadia.grassy_silver_stone": "Roche argentée herbeuse",
+  "block.arcadia.silver_cobblestone": "Pierre argentée",
+
+  "MOD MISC": "AUTRES",
+  "itemGroup.arcadia_tab": "Arcadia"
+}

@@ -1,9 +1,15 @@
-package com.example.examplemod;
+package multiteam.arcadia;
 
+import multiteam.arcadia.setup.ModItemGroup;
+import multiteam.arcadia.setup.Registration;
+import multiteam.arcadia.setup.items.AngelWings;
+import multiteam.arcadia.setup.items.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -18,30 +24,31 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
 
-// The value here should match an entry in the META-INF/mods.toml file
-@Mod("examplemod")
-public class ExampleMod
+@Mod(ArcadiaMod.MOD_ID)
+public class ArcadiaMod
 {
-    // Directly reference a log4j logger.
+    public static final String MOD_ID = "arcadia";
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public ExampleMod() {
-        // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        // Register the enqueueIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+    public static final ModItemGroup ARCADIA_MAIN_TAB = new ModItemGroup("arcadia_main_tab", () -> new ItemStack(ModItems.ANGEL_WINGS.get()));
 
-        // Register ourselves for server and other game events we are interested in
+    public ArcadiaMod() {
+
+        Registration.register();
+
+        final IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        modBus.addListener(this::setup);
+        modBus.addListener(this::enqueueIMC);
+        modBus.addListener(this::processIMC);
+        modBus.addListener(this::doClientStuff);
+        modBus.addListener(AngelWings::onClientSetup);
         MinecraftForge.EVENT_BUS.register(this);
+        IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
+
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
@@ -54,7 +61,7 @@ public class ExampleMod
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        InterModComms.sendTo("arcadia", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event)

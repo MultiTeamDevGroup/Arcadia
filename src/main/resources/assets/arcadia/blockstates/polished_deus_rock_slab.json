@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "type=bottom": {
+            "model": "arcadia:block/polished_deus_rock_slab"
+        },
+        "type=double": {
+            "model": "arcadia:block/polished_deus_rock"
+        },
+        "type=top": {
+            "model": "arcadia:block/polished_deus_rock_slab_top"
+        }
+    }
+}
