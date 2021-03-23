@@ -4,6 +4,7 @@ import multiteam.arcadia.setup.ModItemGroup;
 import multiteam.arcadia.setup.Registration;
 import multiteam.arcadia.setup.items.AngelWings;
 import multiteam.arcadia.setup.items.ModItems;
+import multiteam.arcadia.setup.particles.ModParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
@@ -42,6 +43,7 @@ public class ArcadiaMod
         modBus.addListener(this::processIMC);
         modBus.addListener(this::doClientStuff);
         modBus.addListener(AngelWings::onClientSetup);
+        //modBus.addListener(ModParticles::registerParticles);
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
