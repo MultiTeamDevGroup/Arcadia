@@ -1,6 +1,8 @@
 package multiteam.arcadia.setup.blocks;
 
 import multiteam.arcadia.setup.particles.ModParticles;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
@@ -16,6 +18,9 @@ public class StormyCloudBlock extends CloudBlock{
     @Override
     public void poofOutOfExistence(World worldIn, BlockPos pos, Boolean causedbyfall){
         worldIn.playSound((PlayerEntity)null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WOOL_BREAK, SoundCategory.BLOCKS, 0.5F, 0.4F );
+        LightningBoltEntity lightning = new LightningBoltEntity(EntityType.LIGHTNING_BOLT, worldIn);
+        lightning.absMoveTo(pos.getX(), pos.getY(), pos.getZ(), 0, 0.0F);
+        worldIn.addFreshEntity(lightning);
         double posx = (double)pos.getX()+0.0D;
         double posy = (double)pos.getY()+0.0D;
         double posz = (double)pos.getZ()+0.0D;

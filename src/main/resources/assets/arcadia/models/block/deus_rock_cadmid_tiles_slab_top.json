@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/slab_top",
+    "textures": {
+        "top": "arcadia:block/deus_rock_cadmid_tiles",
+        "bottom": "arcadia:block/deus_rock_cadmid_tiles",
+        "side": "arcadia:block/deus_rock_cadmid_tiles"
+    }
+}

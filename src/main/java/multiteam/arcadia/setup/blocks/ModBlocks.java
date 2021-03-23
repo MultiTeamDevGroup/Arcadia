@@ -22,7 +22,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CLOUD_BLOCK = register("cloud_block", () -> new CloudBlock(AbstractBlock.Properties.of(CLOUD).strength(0, 0).harvestLevel(0).sound(SoundType.WOOL).emissiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true)), ArcadiaMod.ARCADIA_MAIN_TAB);
     public static final RegistryObject<Block> STORMY_CLOUD_BLOCK = register("stormy_cloud_block", () -> new StormyCloudBlock(AbstractBlock.Properties.of(CLOUD).strength(0, 0).harvestLevel(0).sound(SoundType.WOOL).emissiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true)), ArcadiaMod.ARCADIA_MAIN_TAB);
 
-    //STONES
+    //DEUS ROCK
     public static final RegistryObject<Block> DEUS_ROCK = register("deus_rock", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
     public static final RegistryObject<Block> DEUS_ROCK_POLISHED = register("polished_deus_rock", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
     public static final RegistryObject<StairsBlock> DEUS_ROCK_POLISHED_STAIRS = register("polished_deus_rock_stairs", () -> new StairsBlock(ModBlocks.DEUS_ROCK.get().defaultBlockState(), AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
@@ -33,12 +33,15 @@ public class ModBlocks {
     public static final RegistryObject<Block> DEUS_ROCK_GILDED_TILES = register("deus_rock_gilded_tiles", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
     public static final RegistryObject<StairsBlock> DEUS_ROCK_GILDED_TILES_STAIRS = register("deus_rock_gilded_tiles_stairs", () -> new StairsBlock(ModBlocks.DEUS_ROCK.get().defaultBlockState(), AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
     public static final RegistryObject<SlabBlock> DEUS_ROCK_GILDED_TILES_SLAB = register("deus_rock_gilded_tiles_slab", () -> new SlabBlock(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<Block> DEUS_ROCK_CADMID_TILES = register("deus_rock_cadmid_tiles", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<StairsBlock> DEUS_ROCK_CADMID_TILES_STAIRS = register("deus_rock_cadmid_tiles_stairs", () -> new StairsBlock(ModBlocks.DEUS_ROCK.get().defaultBlockState(), AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<SlabBlock> DEUS_ROCK_CADMID_TILES_SLAB = register("deus_rock_cadmid_tiles_slab", () -> new SlabBlock(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
 
-
+    //SILVER STONE
     public static final RegistryObject<Block> SILVER_STONE = register("silver_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
     public static final RegistryObject<Block> SILVER_STONE_GRASSY = register("grassy_silver_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
     public static final RegistryObject<Block> SILVER_COBBLESTONE = register("silver_cobblestone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
-
+    public static final RegistryObject<OreBlock> CADMIUM_ORE = register("cadmium_ore", () -> new OreBlock(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(4).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
 
 
     public static void register() {

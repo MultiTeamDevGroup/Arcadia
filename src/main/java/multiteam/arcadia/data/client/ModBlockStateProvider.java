@@ -20,8 +20,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.DEUS_ROCK_POLISHED.get());
         simpleBlock(ModBlocks.DEUS_ROCK_TILES.get());
         simpleBlock(ModBlocks.DEUS_ROCK_GILDED_TILES.get());
+        simpleBlock(ModBlocks.DEUS_ROCK_CADMID_TILES.get());
 
         simpleBlock(ModBlocks.SILVER_STONE.get());
         simpleBlock(ModBlocks.SILVER_COBBLESTONE.get());
+        simpleBlock(ModBlocks.CADMIUM_ORE.get());
     }
 }

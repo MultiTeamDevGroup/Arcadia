@@ -1,6 +1,8 @@
 {
   "MOD ITEMS": "ITEMS",
   "item.arcadia.angel_wings": "Angel Wings",
+  "item.arcadia.cadmium_ingot": "Cadmium Ingot",
+  "item.arcadia.cadmium_orb": "Cadmium Orb",
   "tooltip.arcadia.angel_wing_description": "Your key to the skies!",
 
   "MOD BLOCKS": "BLOCKS",
@@ -17,12 +19,16 @@
   "block.arcadia.deus_rock_gilded_tiles": "Gilded Deus Rock Tiles",
   "block.arcadia.deus_rock_gilded_tiles_stairs": "Gilded Deus Rock Tiles Stairs",
   "block.arcadia.deus_rock_gilded_tiles_slab": "Gilded Deus Rock Tiles Slab",
+  "block.arcadia.deus_rock_cadmid_tiles": "Cadmid Deus Rock Tiles",
+  "block.arcadia.deus_rock_cadmid_tiles_stairs": "Cadmid Deus Rock Tiles Stairs",
+  "block.arcadia.deus_rock_cadmid_tiles_slab": "Cadmid Deus Rock Tiles Slab",
 
   "block.arcadia.silver_stone": "Silver Stone",
   "block.arcadia.grassy_silver_stone": "Grassy Silver Stone",
   "block.arcadia.silver_cobblestone": "Silver Cobblestone",
+  "block.arcadia.cadmium_ore": "Cadmium Ore",
 
   "MOD MISC": "MISC",
-  "itemGroup.arcadia_tab": "Arcadia",
+  "itemGroup.arcadia_main_tab": "Arcadia",
   "message.arcadia.action_bar.entering_dimension": "Entering Dimension - Cloud Realms"
 }
