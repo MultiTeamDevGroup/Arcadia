@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/outer_stairs",
+    "textures": {
+        "bottom": "arcadia:block/chiseled_nimbus_stonebricks",
+        "top": "arcadia:block/chiseled_nimbus_stonebricks",
+        "side": "arcadia:block/chiseled_nimbus_stonebricks"
+    }
+}

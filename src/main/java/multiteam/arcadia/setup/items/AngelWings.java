@@ -14,6 +14,8 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.*;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -21,10 +23,15 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.CuriosCapability;
+import top.theillusivec4.curios.api.type.capability.ICurio;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -33,6 +40,76 @@ public class AngelWings extends Item {
     public AngelWings(Properties properties) {
         super(properties);
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
+    }
+
+    @Override
+    public ICapabilityProvider initCapabilities(final ItemStack stack, CompoundNBT unused) {
+        ICurio curio = new ICurio() {
+            @Override
+            public boolean canRightClickEquip() {
+                return true;
+            }
+
+            @Override
+            public void onEquip(String identifier, int index, LivingEntity livingEntity) {
+                if (livingEntity instanceof PlayerEntity) {
+                    startFlying((PlayerEntity) livingEntity);
+                }
+            }
+
+            @Override
+            public void onUnequip(String identifier, int index, LivingEntity livingEntity) {
+                if (livingEntity instanceof PlayerEntity) {
+                    stopFlying((PlayerEntity) livingEntity);
+                }
+            }
+
+            private void startFlying(PlayerEntity player) {
+                if (!player.isCreative() && !player.isSpectator()) {
+                    player.abilities.mayfly = true;
+                    player.onUpdateAbilities();
+                }
+            }
+
+            private void stopFlying(PlayerEntity player) {
+                if (!player.isCreative() && !player.isSpectator()) {
+                    player.abilities.flying = false;
+                    player.abilities.mayfly = false;
+                    player.onUpdateAbilities();
+                }
+            }
+
+            @Override
+            public void curioTick(String identifier, int index, LivingEntity livingEntity) {
+                if (livingEntity instanceof PlayerEntity) {
+                    PlayerEntity player = ((PlayerEntity) livingEntity);
+                    if (!player.abilities.mayfly) {
+                        startFlying(player);
+                    }
+                }
+            }
+
+            @Override
+            public boolean canEquip(String identifier, LivingEntity entityLivingBase) {
+                return !CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.ANGEL_WINGS.get(), entityLivingBase)
+                        .isPresent();
+            }
+        };
+
+        return new ICapabilityProvider() {
+            private final LazyOptional<ICurio> curioOpt = LazyOptional.of(() -> curio);
+
+            @Nonnull
+            @Override
+            public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
+
+                return CuriosCapability.ITEM.orEmpty(cap, curioOpt);
+            }
+        };
+    }
+
+    public static boolean isWingInCuriosSlot(ItemStack wing, LivingEntity player) {
+        return CuriosApi.getCuriosHelper().findEquippedCurio(wing.getItem(), player).isPresent();
     }
 
     @OnlyIn(Dist.CLIENT)

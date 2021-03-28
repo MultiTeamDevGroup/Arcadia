@@ -1,0 +1,18 @@
+{
+	"ambient.arcadia.cloudy_paradise": {
+		"category": "item",
+		"subtitle": "ambient.arcadia.cloudy_paradise.sub",
+		"sounds": [{
+			"name": "arcadia:item/cloudy_paradise",
+			"stream": true
+		}]
+	},
+	"ambient.arcadia.winged": {
+		"category": "item",
+		"subtitle": "ambient.arcadia.winged.sub",
+		"sounds": [{
+			"name": "arcadia:item/winged",
+			"stream": true
+		}]
+	}
+}

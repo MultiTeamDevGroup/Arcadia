@@ -4,6 +4,8 @@
   "item.arcadia.cadmium_ingot": "Cadmium Ingot",
   "item.arcadia.cadmium_orb": "Cadmium Orb",
   "tooltip.arcadia.angel_wing_description": "Your key to the skies!",
+  "item.arcadia.cloudy_paradise_disc": "Arcadia Music Disc",
+  "item.arcadia.winged_disc": "Arcadia Music Disc",
 
   "MOD BLOCKS": "BLOCKS",
   "block.arcadia.cloud_block": "Cloud Block",
@@ -27,6 +29,19 @@
   "block.arcadia.grassy_silver_stone": "Grassy Silver Stone",
   "block.arcadia.silver_cobblestone": "Silver Cobblestone",
   "block.arcadia.cadmium_ore": "Cadmium Ore",
+
+  "block.arcadia.nimbus_stone": "Nimbus Stone",
+  "block.arcadia.nimbus_cobblestone": "Nimbus Cobblestone",
+  "block.arcadia.nimbus_stonebricks": "Nimbus Stone Bricks",
+  "block.arcadia.nimbus_stonebricks_stairs": "Nimbus Stone Bricks Stairs",
+  "block.arcadia.nimbus_stonebricks_slab": "Nimbus Stone Bricks Slab",
+  "block.arcadia.chiseled_nimbus_stonebricks": "Chiseled Nimbus Stone Bricks",
+  "block.arcadia.chiseled_nimbus_stonebricks_stairs": "Chiseled Nimbus Stone Bricks Stairs",
+  "block.arcadia.chiseled_nimbus_stonebricks_slab": "Chiseled Nimbus Stone Bricks Slab",
+
+  "MOD MUSIC": "MUSIC",
+  "item.arcadia.cloudy_paradise_disc.desc": "Pyrocide - Cloudy Paradise",
+  "item.arcadia.winged_disc.desc": "Pyrocide - Winged",
 
   "MOD MISC": "MISC",
   "itemGroup.arcadia_main_tab": "Arcadia",

@@ -43,6 +43,16 @@ public class ModBlocks {
     public static final RegistryObject<Block> SILVER_COBBLESTONE = register("silver_cobblestone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
     public static final RegistryObject<OreBlock> CADMIUM_ORE = register("cadmium_ore", () -> new OreBlock(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(4).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
 
+    //NIMBUS STONE
+    public static final RegistryObject<Block> NIMBUS_STONE = register("nimbus_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<Block> NIMBUS_COBBLESTONE = register("nimbus_cobblestone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<Block> NIMBUS_STONEBRICKS = register("nimbus_stonebricks", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<Block> CHISELED_NIMBUS_STONEBRICKS = register("chiseled_nimbus_stonebricks", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<StairsBlock> NIMBUS_STONEBRICKS_STAIRS = register("nimbus_stonebricks_stairs", () -> new StairsBlock(ModBlocks.DEUS_ROCK.get().defaultBlockState(), AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<StairsBlock> CHISELED_NIMBUS_STONEBRICKS_STAIRS = register("chiseled_nimbus_stonebricks_stairs", () -> new StairsBlock(ModBlocks.DEUS_ROCK.get().defaultBlockState(), AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<SlabBlock> NIMBUS_STONEBRICKS_SLAB = register("nimbus_stonebricks_slab", () -> new SlabBlock(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<SlabBlock> CHISELED_NIMBUS_STONEBRICKS_SLAB = register("chiseled_nimbus_stonebricks_slab", () -> new SlabBlock(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
+
 
     public static void register() {
 
