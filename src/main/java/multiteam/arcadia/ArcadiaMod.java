@@ -2,11 +2,14 @@ package multiteam.arcadia;
 
 import multiteam.arcadia.setup.ModItemGroup;
 import multiteam.arcadia.setup.Registration;
+import multiteam.arcadia.setup.blocks.ModBlocks;
 import multiteam.arcadia.setup.items.AngelWings;
 import multiteam.arcadia.setup.items.ModItems;
 import multiteam.arcadia.setup.particles.ModParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -22,6 +25,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotTypeMessage;
 import top.theillusivec4.curios.api.SlotTypePreset;
 
@@ -51,19 +55,20 @@ public class ArcadiaMod
 
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+    private void setup(final FMLCommonSetupEvent event) {
+
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
+
+        RenderTypeLookup.setRenderLayer(ModBlocks.CLOUD_BLOCK.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(ModBlocks.JELLY_CLOUD_BLOCK.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(ModBlocks.STORMY_CLOUD_BLOCK.get(), RenderType.translucent());
+
     }
 
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
+    private void enqueueIMC(final InterModEnqueueEvent event) {
+
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,() -> SlotTypePreset.BACK.getMessageBuilder().build());
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,() -> SlotTypePreset.CURIO.getMessageBuilder().build());
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,() -> SlotTypePreset.RING.getMessageBuilder().build());
@@ -74,32 +79,23 @@ public class ArcadiaMod
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,() -> SlotTypePreset.HANDS.getMessageBuilder().build());
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,() -> SlotTypePreset.HEAD.getMessageBuilder().build());
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,() -> SlotTypePreset.NECKLACE.getMessageBuilder().build());
+
     }
 
-    private void processIMC(final InterModProcessEvent event)
-    {
-        // some example code to receive and process InterModComms from other mods
-        LOGGER.info("Got IMC {}", event.getIMCStream().
-                map(m->m.getMessageSupplier().get()).
-                collect(Collectors.toList()));
+    private void processIMC(final InterModProcessEvent event) {
+
     }
 
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
-        // do something when the server starts
-        LOGGER.info("HELLO from server starting");
+
     }
 
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Register Block");
+
         }
     }
 }

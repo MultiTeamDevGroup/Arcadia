@@ -16,6 +16,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         withExistingParent("cloud_block", modLoc("block/cloud_block"));
+        withExistingParent("jelly_cloud_block", modLoc("block/jelly_cloud_block"));
         withExistingParent("stormy_cloud_block", modLoc("block/stormy_cloud_block"));
         withExistingParent("deus_rock", modLoc("block/deus_rock"));
         withExistingParent("polished_deus_rock", modLoc("block/polished_deus_rock"));

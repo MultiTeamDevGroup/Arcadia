@@ -19,8 +19,10 @@ public class ModBlocks {
 
     public static final Material CLOUD = (new Material(MaterialColor.NONE, false, false, false, false, false, false, Material.ICE.getPushReaction()));
 
-    public static final RegistryObject<Block> CLOUD_BLOCK = register("cloud_block", () -> new CloudBlock(AbstractBlock.Properties.of(CLOUD).strength(0, 0).harvestLevel(0).sound(SoundType.WOOL).emissiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true)), ArcadiaMod.ARCADIA_MAIN_TAB);
-    public static final RegistryObject<Block> STORMY_CLOUD_BLOCK = register("stormy_cloud_block", () -> new StormyCloudBlock(AbstractBlock.Properties.of(CLOUD).strength(0, 0).harvestLevel(0).sound(SoundType.WOOL).emissiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true)), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<Block> CLOUD_BLOCK = register("cloud_block", () -> new CloudBlock(AbstractBlock.Properties.of(CLOUD).strength(0, 0).harvestLevel(0).sound(SoundType.WOOL).emissiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true).noCollission()), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<Block> STORMY_CLOUD_BLOCK = register("stormy_cloud_block", () -> new StormyCloudBlock(AbstractBlock.Properties.of(CLOUD).strength(0, 0).harvestLevel(0).sound(SoundType.WOOL).emissiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true).noCollission()), ArcadiaMod.ARCADIA_MAIN_TAB);
+    public static final RegistryObject<Block> JELLY_CLOUD_BLOCK = register("jelly_cloud_block", () -> new CloudBlock(AbstractBlock.Properties.of(CLOUD).strength(0, 0).harvestLevel(0).sound(SoundType.WOOL).emissiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true).noCollission()), ArcadiaMod.ARCADIA_MAIN_TAB);
+
 
     //DEUS ROCK
     public static final RegistryObject<Block> DEUS_ROCK = register("deus_rock", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
