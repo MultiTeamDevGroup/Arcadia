@@ -5,6 +5,7 @@ import multiteam.arcadia.setup.particles.ModParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Direction;
@@ -49,7 +50,13 @@ public class CloudBlock extends Block {
 
     @Override
     public void fallOn(World worldIn, BlockPos pos, Entity entity, float fallDistance) {
-        poofOutOfExistence(worldIn, pos, true, entity);
+        if(entity.getType() == EntityType.SLIME){
+            if(!worldIn.isClientSide){
+                worldIn.setBlockAndUpdate(pos, ModBlocks.JELLY_CLOUD_BLOCK.get().defaultBlockState());
+            }
+        }else{
+            poofOutOfExistence(worldIn, pos, true, entity);
+        }
     }
 
     public void poofOutOfExistence(World worldIn, BlockPos pos, Boolean causedbyfall, Entity entity){
