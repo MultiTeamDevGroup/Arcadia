@@ -15,7 +15,8 @@ import net.minecraftforge.fml.common.Mod;
 public class ModParticles {
 
     public static final RegistryObject<BasicParticleType> CLOUD_POOF = Registration.PARTICLES.register("cloud_poof_particle", () -> new BasicParticleType(false));
-    //public static final RegistryObject<BasicParticleType> STORMY_CLOUD_POOF = Registration.PARTICLES.register("cloud_poof_particle", () -> new BasicParticleType(false));
+    public static final RegistryObject<BasicParticleType> STORMY_CLOUD_POOF = Registration.PARTICLES.register("stormy_cloud_poof_particle", () -> new BasicParticleType(false));
+    public static final RegistryObject<BasicParticleType> JELLY_CLOUD_POOF = Registration.PARTICLES.register("jelly_cloud_poof_particle", () -> new BasicParticleType(false));
 
     public static void register() {
     }
@@ -25,7 +26,8 @@ public class ModParticles {
     public static void registerParticles(ParticleFactoryRegisterEvent event){
 
         Minecraft.getInstance().particleEngine.register(CLOUD_POOF.get(), CloudPoofParticle.Factory::new);
-        //Minecraft.getInstance().particleEngine.register(STORMY_CLOUD_POOF.get(), CloudPoofParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(STORMY_CLOUD_POOF.get(), CloudPoofParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(JELLY_CLOUD_POOF.get(), CloudPoofParticle.Factory::new);
 
     }
 
