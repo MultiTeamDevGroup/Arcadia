@@ -23,16 +23,10 @@ public class StormyCloudBlock extends CloudBlock{
         LightningBoltEntity lightning = new LightningBoltEntity(EntityType.LIGHTNING_BOLT, worldIn);
         lightning.absMoveTo(pos.getX(), pos.getY(), pos.getZ(), 0, 0.0F);
         worldIn.addFreshEntity(lightning);
-        double posx = (double)pos.getX()+0.0D;
-        double posy = (double)pos.getY()+0.0D;
-        double posz = (double)pos.getZ()+0.0D;
-        double spedx = 0.2D;
-        double spedy = 2.0D;
-        double spedz = 0.2D;
         for (float x = 0; x < 1;){
             for (float y = 0; y < 1;){
                 for (float z = 0; z < 1;){
-                    worldIn.addParticle(ModParticles.STORMY_CLOUD_POOF.get(), posx+x, posy+y, posz+z, spedx, spedy, spedz);
+                    worldIn.addParticle(ModParticles.STORMY_CLOUD_POOF.get(), pos.getX()+x, pos.getY()+y, pos.getZ()+z,0.2D, 2.0D, 0.2D);
                     z+=0.2f;
                 }
                 y+=0.2f;

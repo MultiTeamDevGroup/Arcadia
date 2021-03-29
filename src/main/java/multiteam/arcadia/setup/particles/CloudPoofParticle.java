@@ -20,13 +20,13 @@ public class CloudPoofParticle extends SpriteTexturedParticle {
         this.bCol = f;
         this.setSize(0.02f,0.02f);
         this.quadSize *= this.random.nextFloat()*1.1f;
-        this.xd *= 0.2f;
-        this.yd *= 0.2f;
-        this.zd *= 0.2f;
+        this.xo = x;
+        this.yo = y;
+        this.zo = z;
         this.age = (int)(20.0D / (Math.random()));
-        //x  = prev pos ?
-        //xo = position ?
-        //xd = motion ?
+        //x  = posX
+        //xo = prevPosX
+        //xd = motionX
     }
 
     @Override
@@ -36,16 +36,13 @@ public class CloudPoofParticle extends SpriteTexturedParticle {
 
     @Override
     public void tick() {
-        this.xo = this.x;
-        this.yo = this.y;
-        this.zo = this.y;
         if(this.age-- <=0){
             this.remove();
         }else{
-            this.xd = this.xd + ((Math.random() * (0.1f - -0.1f)) + -0.1f);//Math.random() * (max - min) + min
-            this.yd = this.yd + ((Math.random() * (0.03f - 0f)) + 0f);
-            this.zd = this.zd + ((Math.random() * (0.1f - -0.1f)) + -0.1f);
             this.move(this.xd, this.yd, this.zd);
+            this.xd *= (double)0.1F;
+            this.yd *= (double)0.03F;
+            this.zd *= (double)0.1F;
         }
     }
 
