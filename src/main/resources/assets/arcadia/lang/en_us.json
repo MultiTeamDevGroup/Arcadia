@@ -6,6 +6,7 @@
   "tooltip.arcadia.angel_wing_description": "Your key to the skies!",
   "item.arcadia.cloudy_paradise_disc": "Arcadia Music Disc",
   "item.arcadia.winged_disc": "Arcadia Music Disc",
+  "item.arcadia.bottled_zap": "Bottle o' Zap",
 
   "MOD BLOCKS": "BLOCKS",
   "block.arcadia.cloud_block": "Cloud Block",
@@ -39,6 +40,9 @@
   "block.arcadia.chiseled_nimbus_stonebricks": "Chiseled Nimbus Stone Bricks",
   "block.arcadia.chiseled_nimbus_stonebricks_stairs": "Chiseled Nimbus Stone Bricks Stairs",
   "block.arcadia.chiseled_nimbus_stonebricks_slab": "Chiseled Nimbus Stone Bricks Slab",
+
+  "MOD ENTITYS": "ENTITYS",
+  "entity.arcadia.zap": "Zap",
 
   "MOD MUSIC": "MUSIC",
   "item.arcadia.cloudy_paradise_disc.desc": "Pyrocide - Cloudy Paradise",

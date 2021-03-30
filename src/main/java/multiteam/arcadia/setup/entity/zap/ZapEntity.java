@@ -1,5 +1,6 @@
 package multiteam.arcadia.setup.entity.zap;
 
+import multiteam.arcadia.setup.items.ModItems;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -163,8 +164,8 @@ public class ZapEntity extends AnimalEntity implements IFlyingAnimal {
                     }
                 }
 
-                //Remember to give bottled zap
-                //playerEntity.addItem();
+                playerEntity.inventory.add(new ItemStack(ModItems.BOTTLED_ZAP.get()));
+
                 this.DONE = true;
 
             }else if(itemstack.getItem() == Items.AIR && DONE == false){

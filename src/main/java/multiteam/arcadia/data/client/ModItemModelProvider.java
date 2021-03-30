@@ -37,6 +37,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         builder(itemGenerated, "angel_wings");
         builder(itemGenerated, "cadmium_ingot");
         builder(itemGenerated, "cadmium_orb");
+        builder(itemGenerated, "bottled_zap");
+
         builder(itemGenerated, "cloudy_paradise_disc");
         builder(itemGenerated, "winged_disc");
     }
