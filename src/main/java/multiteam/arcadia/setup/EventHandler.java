@@ -1,9 +1,7 @@
 package multiteam.arcadia.setup;
 
 import multiteam.arcadia.ArcadiaMod;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,4 +15,5 @@ public class EventHandler {
             System.out.println("A Lightning Struck and it was detected on the server only!!!");
         }
     }
+
 }

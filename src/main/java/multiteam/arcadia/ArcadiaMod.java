@@ -3,6 +3,8 @@ package multiteam.arcadia;
 import multiteam.arcadia.setup.ModItemGroup;
 import multiteam.arcadia.setup.Registration;
 import multiteam.arcadia.setup.blocks.ModBlocks;
+import multiteam.arcadia.setup.entity.ModEntitys;
+import multiteam.arcadia.setup.entity.zap.ZapEntity;
 import multiteam.arcadia.setup.items.AngelWings;
 import multiteam.arcadia.setup.items.ModItems;
 import multiteam.arcadia.setup.particles.ModParticles;
@@ -10,6 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -49,13 +52,15 @@ public class ArcadiaMod
         modBus.addListener(this::processIMC);
         modBus.addListener(this::doClientStuff);
         modBus.addListener(AngelWings::onClientSetup);
-        //modBus.addListener(ModParticles::registerParticles);
+        modBus.addListener(ModEntitys::clientSetup);
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
     }
 
     private void setup(final FMLCommonSetupEvent event) {
+
+        GlobalEntityTypeAttributes.put(ModEntitys.ZAP.get(), ZapEntity.createAttributes().build());
 
     }
 
