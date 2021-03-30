@@ -14,6 +14,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.pathfinding.FlyingPathNavigator;
 import net.minecraft.pathfinding.PathNavigator;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
@@ -22,6 +24,7 @@ import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ZapEntity extends AnimalEntity implements IFlyingAnimal {
 
@@ -133,14 +136,56 @@ public class ZapEntity extends AnimalEntity implements IFlyingAnimal {
         return entitySize.height * 0.7F;
     }
 
+    boolean DONE = false;
     @Override
-    public ActionResultType mobInteract(PlayerEntity playerEntity, Hand handOfPlayer) {
+    public ActionResultType interactAt(PlayerEntity playerEntity, Vector3d p_184199_2_, Hand handOfPlayer) {
         ItemStack itemstack = playerEntity.getItemInHand(handOfPlayer);
-        if(itemstack.getItem().getClass() == Items.STONE_PICKAXE.getClass()){
-            System.out.println("Item: " + itemstack.getItem());
+
+        //SWORD-BOW: STRENGTH
+        //PICKAXE-AXE: HASTE
+        //EMPTY: JUMP BOOST - SWIFTNESS
+        //BOTTLE: TO BOTTLE
+        if(!playerEntity.level.isClientSide && DONE == false){
+            if(itemstack.getItem().getClass() == Items.STONE_SWORD.getClass() || itemstack.getItem().getClass() == Items.BOW.getClass() && DONE == false){
+                playerEntity.addEffect(new EffectInstance(Effects.DAMAGE_BOOST, 2400));
+                this.DONE = true;
+
+            }else if(itemstack.getItem().getClass() == Items.STONE_PICKAXE.getClass() || itemstack.getItem().getClass() == Items.STONE_AXE.getClass() && DONE == false){
+                playerEntity.addEffect(new EffectInstance(Effects.DIG_SPEED, 2400));
+                this.DONE = true;
+
+            }else if(itemstack.getItem() == Items.GLASS_BOTTLE && DONE == false){
+
+                if(!playerEntity.isCreative()){
+                    itemstack.shrink(1);
+                    if(itemstack.isEmpty()){
+                        playerEntity.inventory.removeItem(itemstack);
+                    }
+                }
+
+                //Remember to give bottled zap
+                //playerEntity.addItem();
+                this.DONE = true;
+
+            }else if(itemstack.getItem() == Items.AIR && DONE == false){
+                int randomChance = ThreadLocalRandom.current().nextInt(0, 100 + 1);
+                if(randomChance >= 50){
+                    playerEntity.addEffect(new EffectInstance(Effects.JUMP, 2400));
+                    this.DONE = true;
+
+                }else{
+                    playerEntity.addEffect(new EffectInstance(Effects.MOVEMENT_SPEED, 2400));
+                    this.DONE = true;
+
+                }
+            }
+
+            //Remember to spawn particles
+            this.getEntity().remove();
         }
 
         return super.mobInteract(playerEntity, handOfPlayer);
+
     }
 
 }
