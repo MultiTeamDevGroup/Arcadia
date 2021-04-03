@@ -23,7 +23,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> STORMY_CLOUD_BLOCK = register("stormy_cloud_block", () -> new StormyCloudBlock(AbstractBlock.Properties.of(CLOUD).strength(0, 0).harvestLevel(0).sound(SoundType.WOOL).emissiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true).noCollission()), ArcadiaMod.ARCADIA_MAIN_TAB);
     public static final RegistryObject<Block> JELLY_CLOUD_BLOCK = register("jelly_cloud_block", () -> new JellyCloudBlock(AbstractBlock.Properties.of(CLOUD).strength(0, 0).harvestLevel(0).sound(SoundType.WOOL).emissiveRendering((p_test_1_, p_test_2_, p_test_3_) -> true).noCollission()), ArcadiaMod.ARCADIA_MAIN_TAB);
 
-
+    public static final RegistryObject<LanternBlock> ZAP_LANTERN = registerNoItem("zap_lantern", () -> new LanternBlock(AbstractBlock.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel(value -> 10).noOcclusion()));
     //DEUS ROCK
     public static final RegistryObject<Block> DEUS_ROCK = register("deus_rock", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);
     public static final RegistryObject<Block> DEUS_ROCK_POLISHED = register("polished_deus_rock", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(1.5f,6).harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)), ArcadiaMod.ARCADIA_MAIN_TAB);

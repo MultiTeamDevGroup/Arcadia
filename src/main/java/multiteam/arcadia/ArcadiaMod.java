@@ -70,6 +70,8 @@ public class ArcadiaMod
         RenderTypeLookup.setRenderLayer(ModBlocks.JELLY_CLOUD_BLOCK.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(ModBlocks.STORMY_CLOUD_BLOCK.get(), RenderType.translucent());
 
+        RenderTypeLookup.setRenderLayer(ModBlocks.ZAP_LANTERN.get(), RenderType.cutoutMipped());
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

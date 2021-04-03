@@ -1,16 +1,19 @@
 package multiteam.arcadia.setup.items;
 
+import multiteam.arcadia.setup.blocks.ModBlocks;
 import multiteam.arcadia.setup.entity.ModEntitys;
 import multiteam.arcadia.setup.entity.zap.ZapEntity;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
+import net.minecraft.item.*;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class BottledZap extends Item {
@@ -22,10 +25,26 @@ public class BottledZap extends Item {
     @Override
     public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerEntity, Hand handOfPlayer) {
         ItemStack itemStack = playerEntity.getItemInHand(handOfPlayer);
+        Minecraft instance = Minecraft.getInstance();
 
-        Entity zapEnty = new ZapEntity(ModEntitys.ZAP.get(), playerEntity.level);
-        playerEntity.level.addFreshEntity(zapEnty);
-        zapEnty.setPos(playerEntity.getX(), playerEntity.getY(), playerEntity.getZ());
+        if(instance.hitResult.getType() == RayTraceResult.Type.BLOCK){
+            BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult)instance.hitResult;
+            BlockPos blockpos = blockraytraceresult.getBlockPos();
+            BlockItemUseContext blockItemUseContext = new BlockItemUseContext(playerEntity, handOfPlayer, itemStack, blockraytraceresult);
+            if(playerEntity.isCrouching()){
+                if(ModBlocks.ZAP_LANTERN.get().getStateForPlacement(blockItemUseContext) != null){
+                    worldIn.setBlockAndUpdate(blockpos.offset(blockItemUseContext.getClickedFace().getNormal()), ModBlocks.ZAP_LANTERN.get().getStateForPlacement(blockItemUseContext));
+                }else{
+                    worldIn.setBlockAndUpdate(blockpos.offset(blockItemUseContext.getClickedFace().getNormal()), ModBlocks.ZAP_LANTERN.get().defaultBlockState());
+                }
+            }else{
+                spawnZap(worldIn, blockpos.offset(blockItemUseContext.getClickedFace().getNormal()));
+            }
+        }else if(instance.hitResult.getType() == RayTraceResult.Type.ENTITY){
+            //System.out.println("found entity");
+        }else if(instance.hitResult.getType() == RayTraceResult.Type.MISS){
+            spawnZap(worldIn, playerEntity.blockPosition());
+        }
 
         itemStack.shrink(1);
         if(itemStack.isEmpty()){
@@ -33,6 +52,12 @@ public class BottledZap extends Item {
         }
 
         return ActionResult.consume(itemStack);
+    }
+
+    public void spawnZap(World worldIn, BlockPos pos){
+        Entity zapEnty = new ZapEntity(ModEntitys.ZAP.get(), worldIn);
+        worldIn.addFreshEntity(zapEnty);
+        zapEnty.setPos(pos.getX(), pos.getY(), pos.getZ());
     }
 
 }
