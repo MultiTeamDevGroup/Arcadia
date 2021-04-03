@@ -4,6 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.util.math.MathHelper;
 
 public class ZapEntityModel extends EntityModel<ZapEntity> {
     private final ModelRenderer LeftLeg;
@@ -45,8 +46,12 @@ public class ZapEntityModel extends EntityModel<ZapEntity> {
     }
 
     @Override
-    public void setupAnim(ZapEntity p_225597_1_, float p_225597_2_, float p_225597_3_, float p_225597_4_, float p_225597_5_, float p_225597_6_) {
+    public void setupAnim(ZapEntity zapEntity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
+        this.LeftLeg.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount * 0.5F;
+        this.RightLeg.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount * 0.5F;
+        this.LeftLeg.yRot = 0.0F;
+        this.RightLeg.yRot = 0.0F;
     }
 
     @Override
