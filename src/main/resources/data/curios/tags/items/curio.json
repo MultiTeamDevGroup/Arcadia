@@ -1,7 +1,6 @@
 {
 	"replace": false,
 	"values": [
-		"arcadia:test_curio",
-		"arcadia:angel_wings"
+		"arcadia:test_curio"
 	]
 }

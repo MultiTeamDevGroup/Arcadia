@@ -3,6 +3,8 @@ package multiteam.arcadia.setup.items;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import multiteam.arcadia.ArcadiaMod;
+import multiteam.arcadia.setup.util.TeleportationTools;
+import multiteam.arcadia.setup.world.dimension.ModDimensions;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
@@ -15,6 +17,7 @@ import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.*;
@@ -24,16 +27,19 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import org.apache.logging.log4j.core.jmx.Server;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.api.SlotContext;
@@ -154,13 +160,23 @@ public class AngelWings extends Item {
 
         if(entity instanceof PlayerEntity && cooldown <= 0){
             PlayerEntity playerE = (PlayerEntity) entity.getEntity();
-            if(entity.position().y >= 300 && playerE.getItemBySlot(EquipmentSlotType.CHEST).getItem() == ModItems.ANGEL_WINGS.get() && playerE.level.dimension() == World.OVERWORLD){
-                // this is how you send something to the plaayer's action bar: AT LEAST IT WAS ON THE PREVIOUS VERSION!
+            ServerPlayerEntity serverPlayer = null;
+            if(playerE instanceof ServerPlayerEntity){
+                serverPlayer = (ServerPlayerEntity)playerE;
+            }
+            if(entity.position().y > 300 && playerE.getItemBySlot(EquipmentSlotType.CHEST).getItem() == ModItems.ANGEL_WINGS.get() && playerE.level.dimension() == World.OVERWORLD){
+                // this is how you send something to the player's action bar: AT LEAST IT WAS ON MCP MAPPINGS!
                 // playerE.sendStatusMessage(new TranslationTextComponent("message.arcadia.action_bar.entering_dimension"), true);
 
-                //ServerWorld destWorld = playerE.getServer().overworld().getWorldServer(ModDimensions.CLOUD_REALM);
-                //ServerPlayerEntity serverPlayer = (ServerPlayerEntity) playerE;
-                //TeleportationTools.teleport(serverPlayer, destWorld, new BlockPos(serverPlayer.getPosition().getX(), 30, serverPlayer.getPosition().getY()));
+                if(stack != null){
+                    stack.hurtAndBreak(20, entity, e -> e.hasItemInSlot(EquipmentSlotType.CHEST));
+                }
+                if(serverPlayer !=null){
+                    BlockPos currentPlayerPos = serverPlayer.blockPosition();
+                    ServerWorld world = serverPlayer.getServer().getLevel(ModDimensions.CLOUD_REALM);
+                    TeleportationTools.teleport(serverPlayer, world, new BlockPos(currentPlayerPos.getX(), 100, currentPlayerPos.getZ()));
+                }
+
                 cooldown = 100;
             }
         }
