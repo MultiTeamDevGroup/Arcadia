@@ -6,7 +6,7 @@
 - LazTheArtist [Code - Textures & Models]
 - Pyrocide [Music]
 - Gabe [World Gen Code Help]
-- Special thanks to ItzFred for letting us ues his Zap Concept!
+- Special thanks to ItzFred for letting us use his Zap Concept!
 
 ## Translations
 French Translation - CatCore
