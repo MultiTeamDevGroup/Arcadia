@@ -1,10 +1,12 @@
-# Arcadia
 
 ![Arcadia Logo](https://raw.githubusercontent.com/Laz-The-Artist/Arcadia/main/src/main/resources/arcadia_logo_transparent.png)
-### for Forge 1.16.4 - by MultiTeam
+### for Forge 1.16.5 - by MultiTeam
 
 ## Credits
-Code : LazTheArtist
+- LazTheArtist [Code - Textures & Models]
+- Pyrocide [Music]
+- Gabe [World Gen Code Help]
+- Special thanks to ItzFred for letting us ues his Zap Concept!
 
 ## Translations
 French Translation - CatCore
