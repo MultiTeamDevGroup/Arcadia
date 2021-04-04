@@ -18,6 +18,8 @@ public class ModParticles {
     public static final RegistryObject<BasicParticleType> STORMY_CLOUD_POOF = Registration.PARTICLES.register("stormy_cloud_poof_particle", () -> new BasicParticleType(false));
     public static final RegistryObject<BasicParticleType> JELLY_CLOUD_POOF = Registration.PARTICLES.register("jelly_cloud_poof_particle", () -> new BasicParticleType(false));
 
+    public static final RegistryObject<BasicParticleType> ZAP_BOLT = Registration.PARTICLES.register("zap_bolt_particle", () -> new BasicParticleType(false));
+
     public static void register() {
     }
 
@@ -25,9 +27,13 @@ public class ModParticles {
     @OnlyIn(Dist.CLIENT)
     public static void registerParticles(ParticleFactoryRegisterEvent event){
 
-        Minecraft.getInstance().particleEngine.register(CLOUD_POOF.get(), CloudPoofParticle.Factory::new);
-        Minecraft.getInstance().particleEngine.register(STORMY_CLOUD_POOF.get(), CloudPoofParticle.Factory::new);
-        Minecraft.getInstance().particleEngine.register(JELLY_CLOUD_POOF.get(), CloudPoofParticle.Factory::new);
+        Minecraft instance = Minecraft.getInstance();
+
+        instance.particleEngine.register(CLOUD_POOF.get(), CloudPoofParticle.Factory::new);
+        instance.particleEngine.register(STORMY_CLOUD_POOF.get(), CloudPoofParticle.Factory::new);
+        instance.particleEngine.register(JELLY_CLOUD_POOF.get(), CloudPoofParticle.Factory::new);
+
+        instance.particleEngine.register(ZAP_BOLT.get(), ZapBoltParticle.Factory::new);
 
     }
 
