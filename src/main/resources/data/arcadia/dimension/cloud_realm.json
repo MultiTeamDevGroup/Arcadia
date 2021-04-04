@@ -1,6 +1,10 @@
 {
   "type": "arcadia:cloud_realm",
   "generator": {
-    "type": "arcadia:chunkgen"
+    "type": "arcadia:chunkgen",
+    "settings": {
+      "cutoffSteps": 0.04,
+      "cutoffMid": 140
+    }
   }
 }

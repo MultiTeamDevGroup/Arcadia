@@ -7,13 +7,15 @@ import multiteam.arcadia.setup.entity.ModEntitys;
 import multiteam.arcadia.setup.entity.zap.ZapEntity;
 import multiteam.arcadia.setup.items.AngelWings;
 import multiteam.arcadia.setup.items.ModItems;
-import multiteam.arcadia.setup.particles.ModParticles;
+import multiteam.arcadia.setup.world.biomes.ModBiomeProvider;
+import multiteam.arcadia.setup.world.dimension.CloudRealmChunkGenerator;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,17 +30,14 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotTypeMessage;
 import top.theillusivec4.curios.api.SlotTypePreset;
-
-import java.util.stream.Collectors;
 
 @Mod(ArcadiaMod.MOD_ID)
 public class ArcadiaMod
 {
     public static final String MOD_ID = "arcadia";
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public static final ModItemGroup ARCADIA_MAIN_TAB = new ModItemGroup("arcadia_main_tab", () -> new ItemStack(ModItems.ANGEL_WINGS.get()));
 
@@ -55,6 +54,9 @@ public class ArcadiaMod
         modBus.addListener(ModEntitys::clientSetup);
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
+
+        Registry.register(Registry.CHUNK_GENERATOR, new ResourceLocation(MOD_ID, "chunkgen"), CloudRealmChunkGenerator.CODEC);
+        Registry.register(Registry.BIOME_SOURCE, new ResourceLocation(MOD_ID, "biomes"), ModBiomeProvider.CODEC);
 
     }
 

@@ -16,7 +16,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class EventHandler {
 
     @SubscribeEvent
-    public static void onLightningStrike(EntityJoinWorldEvent event){
+    public static void onEntityAddedToWorld(EntityJoinWorldEvent event){
         if(event.getEntity().getType() == EntityType.LIGHTNING_BOLT && !event.getWorld().isClientSide){
             int randomChance = ThreadLocalRandom.current().nextInt(0, 100 + 1);
             if(randomChance > 96){
@@ -26,5 +26,8 @@ public class EventHandler {
             }
         }
     }
+
+    //@SubscribeEvent
+    //public static void onPlayerRightClick
 
 }
