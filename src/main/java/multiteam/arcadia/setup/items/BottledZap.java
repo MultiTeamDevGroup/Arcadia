@@ -3,18 +3,19 @@ package multiteam.arcadia.setup.items;
 import multiteam.arcadia.setup.blocks.ModBlocks;
 import multiteam.arcadia.setup.entity.ModEntitys;
 import multiteam.arcadia.setup.entity.zap.ZapEntity;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
+import net.minecraft.network.IPacket;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.event.world.NoteBlockEvent;
 
 public class BottledZap extends Item {
 
@@ -23,39 +24,43 @@ public class BottledZap extends Item {
     }
 
     @Override
-    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerEntity, Hand handOfPlayer) {
-        ItemStack itemStack = playerEntity.getItemInHand(handOfPlayer);
-        Minecraft instance = Minecraft.getInstance();
+    public ActionResultType useOn(ItemUseContext context) {
+        PlayerEntity playerEntity = context.getPlayer();
+        ItemStack itemStack = context.getItemInHand();
+        World worldIn = context.getLevel();
+        BlockPos blockPos = context.getClickedPos();
+        Hand handOfPlayer = context.getHand();
+        BlockRayTraceResult blockraytraceresult = new BlockRayTraceResult(context.getClickLocation(), context.getClickedFace(), context.getClickedPos(), context.isInside());
+        BlockItemUseContext blockItemUseContext = new BlockItemUseContext(playerEntity, handOfPlayer, itemStack, blockraytraceresult);
+        boolean shouldConsume = false;
 
         if(!playerEntity.level.isClientSide){
-            if(instance.hitResult.getType() == RayTraceResult.Type.BLOCK){
-                BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult)instance.hitResult;
-                BlockPos blockpos = blockraytraceresult.getBlockPos();
-                BlockItemUseContext blockItemUseContext = new BlockItemUseContext(playerEntity, handOfPlayer, itemStack, blockraytraceresult);
-                if(playerEntity.isCrouching()){
-                    if(ModBlocks.ZAP_LANTERN.get().getStateForPlacement(blockItemUseContext) != null){
-                        worldIn.setBlockAndUpdate(blockpos.offset(blockItemUseContext.getClickedFace().getNormal()), ModBlocks.ZAP_LANTERN.get().getStateForPlacement(blockItemUseContext));
-                    }else{
-                        worldIn.setBlockAndUpdate(blockpos.offset(blockItemUseContext.getClickedFace().getNormal()), ModBlocks.ZAP_LANTERN.get().defaultBlockState());
-                    }
+            if(playerEntity.isCrouching()){
+                if(ModBlocks.ZAP_LANTERN.get().getStateForPlacement(blockItemUseContext) != null){
+                    shouldConsume = true;
+                    worldIn.playSound((PlayerEntity)null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.GLASS_PLACE, SoundCategory.BLOCKS, 0.5F, 0.4F );
+                    worldIn.setBlockAndUpdate(blockPos.offset(blockItemUseContext.getClickedFace().getNormal()), ModBlocks.ZAP_LANTERN.get().getStateForPlacement(blockItemUseContext));
                 }else{
-                    spawnZap(worldIn, blockpos.offset(blockItemUseContext.getClickedFace().getNormal()));
+                    if(worldIn.getBlockState(blockPos.offset(blockItemUseContext.getClickedFace().getNormal())) == Blocks.AIR.defaultBlockState()){
+                        shouldConsume = true;
+                        worldIn.playSound((PlayerEntity)null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.GLASS_PLACE, SoundCategory.BLOCKS, 0.5F, 0.4F );
+                        worldIn.setBlockAndUpdate(blockPos.offset(blockItemUseContext.getClickedFace().getNormal()), ModBlocks.ZAP_LANTERN.get().defaultBlockState());
+                    }
                 }
-            }else if(instance.hitResult.getType() == RayTraceResult.Type.ENTITY){
-                //System.out.println("found entity");
-            }else if(instance.hitResult.getType() == RayTraceResult.Type.MISS){
-                spawnZap(worldIn, playerEntity.blockPosition());
+            }else{
+                shouldConsume = true;
+                spawnZap(worldIn, blockPos.offset(blockItemUseContext.getClickedFace().getNormal()));
             }
         }
 
-        if(!playerEntity.isCreative()){
+        if(!playerEntity.isCreative() && shouldConsume){
             itemStack.shrink(1);
             if(itemStack.isEmpty()){
                 playerEntity.inventory.removeItem(itemStack);
             }
         }
 
-        return ActionResult.consume(itemStack);
+        return ActionResultType.PASS;
     }
 
     public void spawnZap(World worldIn, BlockPos pos){
