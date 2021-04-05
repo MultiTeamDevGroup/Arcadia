@@ -14,5 +14,29 @@
 			"name": "arcadia:item/winged",
 			"stream": true
 		}]
+	},
+	"entity.arcadia.zap.bottle_capture": {
+		"category": "entity",
+		"subtitle": "entity.arcadia.zap.bottle_capture.sub",
+		"sounds": [{
+			"name": "arcadia:entity/zap_bottle_capture",
+			"stream": true
+		}]
+	},
+	"entity.arcadia.zap.bottle_release": {
+		"category": "entity",
+		"subtitle": "entity.arcadia.zap.bottle_release.sub",
+		"sounds": [{
+			"name": "arcadia:entity/zap_bottle_release",
+			"stream": true
+		}]
+	},
+	"entity.arcadia.zap.function_activate": {
+		"category": "entity",
+		"subtitle": "entity.arcadia.zap.function_activate.sub",
+		"sounds": [{
+			"name": "arcadia:entity/zap_function_activate",
+			"stream": true
+		}]
 	}
 }

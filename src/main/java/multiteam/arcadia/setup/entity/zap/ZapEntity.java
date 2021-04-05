@@ -1,6 +1,7 @@
 package multiteam.arcadia.setup.entity.zap;
 
 import multiteam.arcadia.setup.items.ModItems;
+import multiteam.arcadia.setup.music.ModMusics;
 import multiteam.arcadia.setup.particles.ModParticles;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.RandomPositionGenerator;
@@ -150,11 +151,13 @@ public class ZapEntity extends AnimalEntity implements IFlyingAnimal {
         if(!playerEntity.level.isClientSide && DONE == false){
             if(itemstack.getItem().getClass() == Items.STONE_SWORD.getClass() || itemstack.getItem().getClass() == Items.BOW.getClass() && DONE == false){
                 playerEntity.addEffect(new EffectInstance(Effects.DAMAGE_BOOST, 2400));
+                playerEntity.level.playSound((PlayerEntity)null, (double)this.getEntity().getX(), (double)this.getEntity().getY(), (double)this.getEntity().getZ(), ModMusics.ZAP_FUNCTION_ACTIVATE.get(), SoundCategory.NEUTRAL, 0.5F, 1F );
                 playerEntity.level.addParticle(ModParticles.ZAP_BOLT.get(), (double)this.getEntity().getX(), (double)this.getEntity().getY(), (double)this.getEntity().getZ(),1f, 1f, 1f);
                 this.DONE = true;
 
             }else if(itemstack.getItem().getClass() == Items.STONE_PICKAXE.getClass() || itemstack.getItem().getClass() == Items.STONE_AXE.getClass() && DONE == false){
                 playerEntity.addEffect(new EffectInstance(Effects.DIG_SPEED, 2400));
+                playerEntity.level.playSound((PlayerEntity)null, (double)this.getEntity().getX(), (double)this.getEntity().getY(), (double)this.getEntity().getZ(), ModMusics.ZAP_FUNCTION_ACTIVATE.get(), SoundCategory.NEUTRAL, 0.5F, 1F );
                 playerEntity.level.addParticle(ModParticles.ZAP_BOLT.get(), (double)this.getEntity().getX(), (double)this.getEntity().getY(), (double)this.getEntity().getZ(),1f, 1f, 1f);
                 this.DONE = true;
 
@@ -168,6 +171,7 @@ public class ZapEntity extends AnimalEntity implements IFlyingAnimal {
                 }
 
                 playerEntity.inventory.add(new ItemStack(ModItems.BOTTLED_ZAP.get()));
+                playerEntity.level.playSound((PlayerEntity)null, (double)this.getEntity().getX(), (double)this.getEntity().getY(), (double)this.getEntity().getZ(), ModMusics.ZAP_BOTTLE_CAPTURE.get(), SoundCategory.NEUTRAL, 0.5F, 1F );
                 playerEntity.level.addParticle(ModParticles.ZAP_BOLT.get(), (double)this.getEntity().getX(), (double)this.getEntity().getY(), (double)this.getEntity().getZ(),1f, 1f, 1f);
                 this.DONE = true;
 
@@ -175,11 +179,13 @@ public class ZapEntity extends AnimalEntity implements IFlyingAnimal {
                 int randomChance = ThreadLocalRandom.current().nextInt(0, 100 + 1);
                 if(randomChance >= 50){
                     playerEntity.addEffect(new EffectInstance(Effects.JUMP, 2400));
+                    playerEntity.level.playSound((PlayerEntity)null, (double)this.getEntity().getX(), (double)this.getEntity().getY(), (double)this.getEntity().getZ(), ModMusics.ZAP_FUNCTION_ACTIVATE.get(), SoundCategory.NEUTRAL, 0.5F, 1F );
                     playerEntity.level.addParticle(ModParticles.ZAP_BOLT.get(), (double)this.getEntity().getX(), (double)this.getEntity().getY(), (double)this.getEntity().getZ(),1f, 1f, 1f);
                     this.DONE = true;
 
                 }else{
                     playerEntity.addEffect(new EffectInstance(Effects.MOVEMENT_SPEED, 2400));
+                    playerEntity.level.playSound((PlayerEntity)null, (double)this.getEntity().getX(), (double)this.getEntity().getY(), (double)this.getEntity().getZ(), ModMusics.ZAP_FUNCTION_ACTIVATE.get(), SoundCategory.NEUTRAL, 0.5F, 1F );
                     playerEntity.level.addParticle(ModParticles.ZAP_BOLT.get(), (double)this.getEntity().getX(), (double)this.getEntity().getY(), (double)this.getEntity().getZ(),1f, 1f, 1f);
                     this.DONE = true;
                 }

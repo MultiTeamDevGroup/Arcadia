@@ -3,6 +3,7 @@ package multiteam.arcadia.setup.items;
 import multiteam.arcadia.setup.blocks.ModBlocks;
 import multiteam.arcadia.setup.entity.ModEntitys;
 import multiteam.arcadia.setup.entity.zap.ZapEntity;
+import multiteam.arcadia.setup.music.ModMusics;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -38,17 +39,18 @@ public class BottledZap extends Item {
             if(playerEntity.isCrouching()){
                 if(ModBlocks.ZAP_LANTERN.get().getStateForPlacement(blockItemUseContext) != null){
                     shouldConsume = true;
-                    worldIn.playSound((PlayerEntity)null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.GLASS_PLACE, SoundCategory.BLOCKS, 0.5F, 0.4F );
+                    worldIn.playSound((PlayerEntity)null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.GLASS_PLACE, SoundCategory.BLOCKS, 0.5F, 1F );
                     worldIn.setBlockAndUpdate(blockPos.offset(blockItemUseContext.getClickedFace().getNormal()), ModBlocks.ZAP_LANTERN.get().getStateForPlacement(blockItemUseContext));
                 }else{
                     if(worldIn.getBlockState(blockPos.offset(blockItemUseContext.getClickedFace().getNormal())) == Blocks.AIR.defaultBlockState()){
                         shouldConsume = true;
-                        worldIn.playSound((PlayerEntity)null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.GLASS_PLACE, SoundCategory.BLOCKS, 0.5F, 0.4F );
+                        worldIn.playSound((PlayerEntity)null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.GLASS_PLACE, SoundCategory.BLOCKS, 0.5F, 1F );
                         worldIn.setBlockAndUpdate(blockPos.offset(blockItemUseContext.getClickedFace().getNormal()), ModBlocks.ZAP_LANTERN.get().defaultBlockState());
                     }
                 }
             }else{
                 shouldConsume = true;
+                worldIn.playSound((PlayerEntity)null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), ModMusics.ZAP_BOTTLE_RELEASE.get(), SoundCategory.NEUTRAL, 0.5F, 1F );
                 spawnZap(worldIn, blockPos.offset(blockItemUseContext.getClickedFace().getNormal()));
             }
         }

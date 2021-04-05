@@ -48,6 +48,13 @@
   "item.arcadia.cloudy_paradise_disc.desc": "Pyrocide - Cloudy Paradise",
   "item.arcadia.winged_disc.desc": "Pyrocide - Winged",
 
+  "MOD SUBTITLE": "SUBTITLE",
+  "ambient.arcadia.cloudy_paradise.sub": "Cloudy Paradise Music Disc Plays",
+  "ambient.arcadia.winged.sub": "Winged Music Disc Plays",
+  "entity.arcadia.zap.bottle_capture.sub": "Zap Captured",
+  "entity.arcadia.zap.bottle_release.sub": "Zap Released",
+  "entity.arcadia.zap.function_activate.sub": "Zap Activated",
+
   "MOD MISC": "MISC",
   "itemGroup.arcadia_main_tab": "Arcadia",
   "message.arcadia.action_bar.entering_dimension": "Entering Dimension - Cloud Realms"
