@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import multiteam.arcadia.ArcadiaMod;
 import multiteam.arcadia.setup.util.TeleportationTools;
+import multiteam.arcadia.setup.util.TooltipItemRenderSetup;
 import multiteam.arcadia.setup.world.dimension.ModDimensions;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.Minecraft;
@@ -29,6 +30,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -39,7 +41,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import org.apache.logging.log4j.core.jmx.Server;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.api.SlotContext;
@@ -126,6 +127,17 @@ public class AngelWings extends Item {
     public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new TranslationTextComponent("tooltip.arcadia.angel_wing_description").append("").withStyle(TextFormatting.YELLOW));
+
+        CompoundNBT nbtTagCompound = stack.getTag();
+
+        if (nbtTagCompound == null){
+            nbtTagCompound = new CompoundNBT();
+        }
+
+        stack.setTag(nbtTagCompound);
+        Item[] itemsToRender = {ModItems.ANGEL_WINGS.get(), ModItems.ANGEL_WINGS.get(), ModItems.ANGEL_WINGS.get()};
+        TooltipItemRenderSetup.putItems(tooltip,nbtTagCompound, itemsToRender);
+
     }
 
     @Nullable

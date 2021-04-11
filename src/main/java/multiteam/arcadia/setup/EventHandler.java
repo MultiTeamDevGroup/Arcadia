@@ -1,23 +1,39 @@
 package multiteam.arcadia.setup;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import multiteam.arcadia.ArcadiaMod;
 import multiteam.arcadia.setup.entity.ModEntitys;
 import multiteam.arcadia.setup.entity.zap.ZapEntity;
+import multiteam.arcadia.setup.items.ModItems;
 import multiteam.arcadia.setup.util.TeleportationTools;
 import multiteam.arcadia.setup.world.dimension.ModDimensions;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.ITextProperties;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.world.NoteBlockEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.GameData;
 
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -54,7 +70,33 @@ public class EventHandler {
         }
     }
 
-    //@SubscribeEvent
-    //public static void onPlayerRightClick
+    @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
+    public static void renderTooltip(RenderTooltipEvent.PostText event) {
+        ItemStack stack = event.getStack();
+
+        RenderSystem.pushMatrix();
+        RenderSystem.translatef(event.getX(), event.getY() + 12, 500);
+        RenderSystem.scalef(0.5f, 0.5f, 1.0f);
+        Minecraft mc = Minecraft.getInstance();
+        List<? extends ITextProperties> tooltip = event.getLines();
+
+        CompoundNBT nbtTagCompound = stack.getTag();
+
+        if(nbtTagCompound != null){
+
+            if(nbtTagCompound.getBoolean("hasTooltipItem")){
+                for (int i = 0; i < nbtTagCompound.getIntArray("itemsToRender").length; i++){
+                    ItemStack displayStack = new ItemStack(Item.byId(nbtTagCompound.getIntArray("itemsToRender")[i]));
+                    if(displayStack != null){
+                        mc.getItemRenderer().renderGuiItem(displayStack, i * 17, nbtTagCompound.getInt("lineToRender") + 20);
+                    }
+                }
+            }
+
+        }
+
+        RenderSystem.popMatrix();
+    }
 
 }
