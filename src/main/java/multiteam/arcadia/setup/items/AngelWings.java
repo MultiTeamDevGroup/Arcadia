@@ -53,22 +53,45 @@ import java.util.UUID;
 
 public class AngelWings extends Item {
 
+
     public AngelWings(Properties properties) {
         super(properties);
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
+
+        ItemStack itemStack = new ItemStack(this.getItem());
+        CompoundNBT nbtTagCompound = itemStack.getTag();
+        if (nbtTagCompound == null){
+            nbtTagCompound = new CompoundNBT();
+        }
+        itemStack.setTag(nbtTagCompound);
+        nbtTagCompound.putInt("barCurrentFill", 5);
     }
 
     public boolean isCurioEquipped;
 
     @Override
-    public ActionResult<ItemStack> use(World p_77659_1_, PlayerEntity p_77659_2_, Hand p_77659_3_) {
-        ItemStack itemstack = p_77659_2_.getItemInHand(p_77659_3_);
+    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerEntity, Hand handOfPlayer) {
+        ItemStack itemstack = playerEntity.getItemInHand(handOfPlayer);
         EquipmentSlotType equipmentslottype = MobEntity.getEquipmentSlotForItem(itemstack);
-        ItemStack itemstack1 = p_77659_2_.getItemBySlot(equipmentslottype);
+        ItemStack itemstack1 = playerEntity.getItemBySlot(equipmentslottype);
+
+        if(playerEntity.level.isClientSide){
+            CompoundNBT nbtTagCompound = itemstack.getTag();
+            if (nbtTagCompound != null){
+                itemstack.setTag(nbtTagCompound);
+                int currentFill = nbtTagCompound.getInt("barCurrentFill");
+
+                if(currentFill > 0){
+                    currentFill--;
+                }
+                nbtTagCompound.putInt("barCurrentFill", currentFill);
+            }
+        }
+
         if (itemstack1.isEmpty()) {
-            p_77659_2_.setItemSlot(equipmentslottype, itemstack.copy());
+            playerEntity.setItemSlot(equipmentslottype, itemstack.copy());
             itemstack.setCount(0);
-            return ActionResult.sidedSuccess(itemstack, p_77659_1_.isClientSide());
+            return ActionResult.sidedSuccess(itemstack, worldIn.isClientSide());
         } else {
             return ActionResult.fail(itemstack);
         }
@@ -123,6 +146,8 @@ public class AngelWings extends Item {
         };
     }
 
+
+
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -135,8 +160,14 @@ public class AngelWings extends Item {
         }
 
         stack.setTag(nbtTagCompound);
-        Item[] itemsToRender = {ModItems.ANGEL_WINGS.get(), ModItems.ANGEL_WINGS.get(), ModItems.ANGEL_WINGS.get()};
-        TooltipItemRenderSetup.putItems(tooltip,nbtTagCompound, itemsToRender);
+
+        //This is how you make a bar, that can be used as a progress bar or something like taht, to display an integer value in a pretty fancy way.
+        // it does not work properly yet
+        // TooltipItemRenderSetup.makeItemBar(tooltip, nbtTagCompound, Items.FEATHER, Items.APPLE, 5, nbtTagCompound.getInt("barCurrentFill"));
+
+        //This is how you add items that does nothing to the tooltip
+        /**Item[] itemsToRender = {ModItems.ANGEL_WINGS.get(), ModItems.ANGEL_WINGS.get(), ModItems.ANGEL_WINGS.get()};
+        TooltipItemRenderSetup.putItems(tooltip,nbtTagCompound, itemsToRender);**/
 
     }
 
