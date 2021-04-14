@@ -1,10 +1,10 @@
 package multiteam.arcadia.setup.items;
 
+import multiteam.multicore_lib.setup.utilities.*;
+
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import multiteam.arcadia.ArcadiaMod;
-import multiteam.arcadia.setup.util.TeleportationTools;
-import multiteam.arcadia.setup.util.TooltipItemRenderSetup;
 import multiteam.arcadia.setup.world.dimension.ModDimensions;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.Minecraft;
@@ -30,7 +30,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -58,13 +57,13 @@ public class AngelWings extends Item {
         super(properties);
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
 
-        ItemStack itemStack = new ItemStack(this.getItem());
+        /**ItemStack itemStack = new ItemStack(this.getItem());
         CompoundNBT nbtTagCompound = itemStack.getTag();
         if (nbtTagCompound == null){
             nbtTagCompound = new CompoundNBT();
         }
         itemStack.setTag(nbtTagCompound);
-        nbtTagCompound.putInt("barCurrentFill", 5);
+        nbtTagCompound.putInt("barCurrentFill", 5); **/
     }
 
     public boolean isCurioEquipped;
@@ -75,7 +74,7 @@ public class AngelWings extends Item {
         EquipmentSlotType equipmentslottype = MobEntity.getEquipmentSlotForItem(itemstack);
         ItemStack itemstack1 = playerEntity.getItemBySlot(equipmentslottype);
 
-        if(playerEntity.level.isClientSide){
+        /**if(playerEntity.level.isClientSide){
             CompoundNBT nbtTagCompound = itemstack.getTag();
             if (nbtTagCompound != null){
                 itemstack.setTag(nbtTagCompound);
@@ -86,7 +85,7 @@ public class AngelWings extends Item {
                 }
                 nbtTagCompound.putInt("barCurrentFill", currentFill);
             }
-        }
+        }**/
 
         if (itemstack1.isEmpty()) {
             playerEntity.setItemSlot(equipmentslottype, itemstack.copy());
@@ -153,13 +152,13 @@ public class AngelWings extends Item {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new TranslationTextComponent("tooltip.arcadia.angel_wing_description").append("").withStyle(TextFormatting.YELLOW));
 
-        CompoundNBT nbtTagCompound = stack.getTag();
+        /**CompoundNBT nbtTagCompound = stack.getTag();
 
         if (nbtTagCompound == null){
             nbtTagCompound = new CompoundNBT();
         }
 
-        stack.setTag(nbtTagCompound);
+        stack.setTag(nbtTagCompound);**/
 
         //This is how you make a bar, that can be used as a progress bar or something like taht, to display an integer value in a pretty fancy way.
         // it does not work properly yet
@@ -217,7 +216,7 @@ public class AngelWings extends Item {
                 if(serverPlayer !=null){
                     BlockPos currentPlayerPos = serverPlayer.blockPosition();
                     ServerWorld world = serverPlayer.getServer().getLevel(ModDimensions.CLOUD_REALM);
-                    TeleportationTools.teleport(serverPlayer, world, new BlockPos(currentPlayerPos.getX(), 100, currentPlayerPos.getZ()));
+                    TeleportTool.teleportTo(serverPlayer, world, new BlockPos(currentPlayerPos.getX(), 100, currentPlayerPos.getZ()));
                 }
 
                 cooldown = 100;

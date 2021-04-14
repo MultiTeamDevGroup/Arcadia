@@ -1,6 +1,7 @@
 package multiteam.arcadia;
 
-import multiteam.arcadia.setup.ModItemGroup;
+import multiteam.multicore_lib.setup.utilities.*;
+
 import multiteam.arcadia.setup.Registration;
 import multiteam.arcadia.setup.blocks.ModBlocks;
 import multiteam.arcadia.setup.entity.ModEntitys;
@@ -39,7 +40,7 @@ public class ArcadiaMod
     public static final String MOD_ID = "arcadia";
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public static final ModItemGroup ARCADIA_MAIN_TAB = new ModItemGroup("arcadia_main_tab", () -> new ItemStack(ModItems.ANGEL_WINGS.get()));
+    public static final ItemGroupTool ARCADIA_MAIN_TAB = new ItemGroupTool("arcadia_main_tab", () -> new ItemStack(ModItems.ANGEL_WINGS.get()));
 
     public ArcadiaMod() {
 
