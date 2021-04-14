@@ -62,3 +62,9 @@ Now, here we are taking this idea to the next level, with there being two dimens
     versionRange="[1.16.5-4.0.5.0,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.arcadia]]
+    modId="multicore_lib"
+    mandatory=true
+    versionRange="[1.16.5-0.0.1.1,)"
+    ordering="AFTER"
+    side="BOTH"
