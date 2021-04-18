@@ -1,6 +1,7 @@
 package multiteam.arcadia;
 
 import multiteam.multicore_lib.setup.utilities.*;
+import software.bernie.geckolib3.GeckoLib;
 
 import multiteam.arcadia.setup.Registration;
 import multiteam.arcadia.setup.blocks.ModBlocks;
@@ -35,15 +36,16 @@ import top.theillusivec4.curios.api.SlotTypeMessage;
 import top.theillusivec4.curios.api.SlotTypePreset;
 
 @Mod(ArcadiaMod.MOD_ID)
-public class ArcadiaMod
-{
+public class ArcadiaMod {
+
     public static final String MOD_ID = "arcadia";
     public static final Logger LOGGER = LogManager.getLogger();
 
     public static final ItemGroupTool ARCADIA_MAIN_TAB = new ItemGroupTool("arcadia_main_tab", () -> new ItemStack(ModItems.ANGEL_WINGS.get()));
 
     public ArcadiaMod() {
-
+        
+        GeckoLib.initialize();
         Registration.register();
 
         final IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
