@@ -1,6 +1,9 @@
 package multiteam.arcadia;
 
+import multiteam.arcadia.setup.entity.aerogel.AerogelEntity;
 import multiteam.multicore_lib.setup.utilities.*;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.ai.attributes.Attributes;
 import software.bernie.geckolib3.GeckoLib;
 
 import multiteam.arcadia.setup.Registration;
@@ -44,7 +47,7 @@ public class ArcadiaMod {
     public static final ItemGroupTool ARCADIA_MAIN_TAB = new ItemGroupTool("arcadia_main_tab", () -> new ItemStack(ModItems.ANGEL_WINGS.get()));
 
     public ArcadiaMod() {
-        
+
         GeckoLib.initialize();
         Registration.register();
 
@@ -66,7 +69,9 @@ public class ArcadiaMod {
     private void setup(final FMLCommonSetupEvent event) {
 
         GlobalEntityTypeAttributes.put(ModEntitys.ZAP.get(), ZapEntity.createAttributes().build());
+        //GlobalEntityTypeAttributes.put(ModEntitys.AEROGEL.get(), AerogelEntity.createAttributes().build());
 
+        GlobalEntityTypeAttributes.put(ModEntitys.GEO_EXAMPLE_ENTITY.get(), MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0D).build());
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
