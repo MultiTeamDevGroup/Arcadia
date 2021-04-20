@@ -8,6 +8,8 @@ import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
+import net.minecraft.entity.ai.goal.PrioritizedGoal;
 import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
@@ -19,6 +21,7 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -28,21 +31,35 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
+import java.util.stream.Stream;
 
 public class AerogelEntity extends SlimeEntity implements IAnimatable {
     private static final DataParameter<Integer> ID_SIZE = EntityDataManager.defineId(SlimeEntity.class, DataSerializers.INT);
     private boolean wasOnGround;
+    private boolean shouldDisassemble;
 
     private AnimationFactory factory = new AnimationFactory(this);
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.aerogel.idle", true));
+        if(checkIfSHouldDisassemble()){
+            event.getController().setAnimation(new AnimationBuilder().clearAnimations());
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.aerogel.disassemble", false));
+            if(event.getController().getAnimationState() == AnimationState.Stopped){
+                event.getController().setAnimation(new AnimationBuilder().clearAnimations());
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.aerogel.tornado", true));
+            }
+        }else{
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.aerogel.idle", true));
+        }
+
+        System.out.println("animationupdate: " + checkIfSHouldDisassemble());
         return PlayState.CONTINUE;
     }
 
     public AerogelEntity(EntityType<? extends SlimeEntity> type, World worldIn) {
         super(type, worldIn);
         this.moveControl = new AerogelEntity.MoveHelperController(this);
+        this.shouldDisassemble = checkIfSHouldDisassemble();
     }
 
     @Override
@@ -71,7 +88,11 @@ public class AerogelEntity extends SlimeEntity implements IAnimatable {
         this.goalSelector.addGoal(1, new AerogelEntity.FloatGoal(this));
         this.goalSelector.addGoal(2, new AerogelEntity.AttackGoal(this));
         this.goalSelector.addGoal(3, new AerogelEntity.FaceRandomGoal(this));
-        this.goalSelector.addGoal(5, new AerogelEntity.HopGoal(this));
+        this.goalSelector.addGoal(4, new AerogelEntity.HopGoal(this));
+
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, (p_213811_1_) -> {
+            return Math.abs(p_213811_1_.getY() - this.getY()) <= 4.0D;
+        }));
     }
 
     public boolean isTiny() {
@@ -103,6 +124,7 @@ public class AerogelEntity extends SlimeEntity implements IAnimatable {
         super.addAdditionalSaveData(p_213281_1_);
         p_213281_1_.putInt("Size", this.getSize() - 1);
         p_213281_1_.putBoolean("wasOnGround", this.wasOnGround);
+        p_213281_1_.putBoolean("shouldDisassemble", this.shouldDisassemble);
     }
 
     @Override
@@ -115,6 +137,7 @@ public class AerogelEntity extends SlimeEntity implements IAnimatable {
         this.setSize(i + 1, false);
         super.readAdditionalSaveData(p_70037_1_);
         this.wasOnGround = p_70037_1_.getBoolean("wasOnGround");
+        this.shouldDisassemble = p_70037_1_.getBoolean("shouldDisassemble");
     }
 
     public static AttributeModifierMap.MutableAttribute createAttributes() {
@@ -136,10 +159,24 @@ public class AerogelEntity extends SlimeEntity implements IAnimatable {
         this.xpReward = p_70799_1_;
     }
 
+    public boolean checkIfSHouldDisassemble(){
+        LivingEntity livingentity = this.getTarget();
+        if (livingentity == null) {
+            return false;
+        } else if (!livingentity.isAlive()) {
+            return false;
+        } else {
+            return livingentity instanceof PlayerEntity && ((PlayerEntity)livingentity).abilities.invulnerable ? false : this.getMoveControl() instanceof AerogelEntity.MoveHelperController;
+        }
+    }
+
     @Override
     public void tick() {
 
         super.tick();
+
+        this.shouldDisassemble = checkIfSHouldDisassemble();
+
         if (this.onGround && !this.wasOnGround) {
             int i = this.getSize();
 
@@ -209,6 +246,7 @@ public class AerogelEntity extends SlimeEntity implements IAnimatable {
 
         public void start() {
             this.growTiredTimer = 300;
+            this.aerogelEntity.shouldDisassemble = true;
             super.start();
         }
 
@@ -225,8 +263,20 @@ public class AerogelEntity extends SlimeEntity implements IAnimatable {
             }
         }
 
+        public boolean checkIfSHouldDisassemble(){
+            LivingEntity livingentity = this.aerogelEntity.getTarget();
+            if (livingentity == null) {
+                return false;
+            } else if (!livingentity.isAlive()) {
+                return false;
+            } else {
+                return livingentity instanceof PlayerEntity && ((PlayerEntity)livingentity).abilities.invulnerable ? false : this.aerogelEntity.getMoveControl() instanceof AerogelEntity.MoveHelperController;
+            }
+        }
+
         public void tick() {
             this.aerogelEntity.lookAt(this.aerogelEntity.getTarget(), 10.0F, 10.0F);
+            this.aerogelEntity.shouldDisassemble = checkIfSHouldDisassemble();
             ((AerogelEntity.MoveHelperController)this.aerogelEntity.getMoveControl()).setDirection(this.aerogelEntity.yRot, this.aerogelEntity.isDealsDamage());
         }
     }

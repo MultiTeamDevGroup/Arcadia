@@ -17,7 +17,7 @@ public class ModEntitys {
 
     public static final RegistryObject<EntityType<ZapEntity>> ZAP = Registration.ENTITY_TYPES.register("zap", () -> EntityType.Builder.of(ZapEntity::new, EntityClassification.AMBIENT).sized(0.7f,0.7f).fireImmune().setShouldReceiveVelocityUpdates(false).build("zap"));
 
-    public static final RegistryObject<EntityType<AerogelEntity>> AEROGEL = buildEntity(AerogelEntity::new, AerogelEntity.class, 1.0F, 1.0F);
+    public static final RegistryObject<EntityType<AerogelEntity>> AEROGEL = buildEntity(AerogelEntity::new, AerogelEntity.class, 3.0F, 3.0F);
 
 
     public static <T extends Entity> RegistryObject<EntityType<T>> buildEntity(EntityType.IFactory<T> entity, Class<T> entityClass, float width, float height) {
