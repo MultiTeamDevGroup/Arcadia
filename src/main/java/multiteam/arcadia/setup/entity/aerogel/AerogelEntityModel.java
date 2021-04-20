@@ -7,11 +7,14 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
+
 public class AerogelEntityModel extends AnimatedGeoModel<AerogelEntity> implements IAnimatable {
+
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     @Override
     public ResourceLocation getModelLocation(AerogelEntity aerogelEntity) {
-        return new ResourceLocation(ArcadiaMod.MOD_ID, "models/entity/aero_gel.json");
+        return new ResourceLocation(ArcadiaMod.MOD_ID, "geo/entity/aero_gel.json");
     }
 
     @Override
@@ -31,6 +34,7 @@ public class AerogelEntityModel extends AnimatedGeoModel<AerogelEntity> implemen
 
     @Override
     public AnimationFactory getFactory() {
-        return null;
+        return factory;
     }
+
 }

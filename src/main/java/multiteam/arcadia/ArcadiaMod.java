@@ -68,12 +68,7 @@ public class ArcadiaMod {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-
-        GlobalEntityTypeAttributes.put(ModEntitys.ZAP.get(), ZapEntity.createAttributes().build());
-        GlobalEntityTypeAttributes.put(ModEntitys.GEO_EXAMPLE_ENTITY.get(), GeoExampleEntity.createAttributes().build());
-        //GlobalEntityTypeAttributes.put(ModEntitys.AEROGEL.get(), AerogelEntity.createAttributes().build());
-
-        //GlobalEntityTypeAttributes.put(ModEntitys.GEO_EXAMPLE_ENTITY.get(), MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0D).build());
+        ModEntitys.applyAttributes();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
