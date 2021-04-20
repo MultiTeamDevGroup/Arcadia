@@ -3,8 +3,6 @@ package multiteam.arcadia.setup.entity;
 import multiteam.arcadia.setup.Registration;
 import multiteam.arcadia.setup.entity.GeoExampleEntity.ExampleGeoRenderer;
 import multiteam.arcadia.setup.entity.GeoExampleEntity.GeoExampleEntity;
-import multiteam.arcadia.setup.entity.aerogel.AerogelEntity;
-import multiteam.arcadia.setup.entity.aerogel.AerogelEntityRenderer;
 import multiteam.arcadia.setup.entity.zap.ZapEntity;
 import multiteam.arcadia.setup.entity.zap.ZapEntityRenderer;
 import net.minecraft.entity.Entity;
@@ -36,6 +34,7 @@ public class ModEntitys {
         String name = entityClass.getSimpleName().toLowerCase();
         return Registration.ENTITY_TYPES.register(name, () -> EntityType.Builder.of(entity, EntityClassification.CREATURE).sized(width, height).build(name));
     }
+
 
 
 }

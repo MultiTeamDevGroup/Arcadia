@@ -2,6 +2,7 @@ package multiteam.arcadia.setup.music;
 
 import multiteam.arcadia.ArcadiaMod;
 import multiteam.arcadia.setup.Registration;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.util.Lazy;
@@ -28,6 +29,7 @@ public class ModMusics {
     public static final RegistryObject<SoundEvent> ZAP_BOTTLE_CAPTURE = Registration.SOUND_EVENTS.register("arcadia.entity.zap.bottle_capture", ZAP_BOTTLE_CAPTURE_LAZY);
     public static final RegistryObject<SoundEvent> ZAP_BOTTLE_RELEASE = Registration.SOUND_EVENTS.register("arcadia.entity.zap.bottle_release", ZAP_BOTTLE_RELEASE_LAZY);
     public static final RegistryObject<SoundEvent> ZAP_FUNCTION_ACTIVATE = Registration.SOUND_EVENTS.register("arcadia.entity.zap.function_activate", ZAP_FUNCTION_ACTIVATE_LAZY);
+
 
 
     public static void register() {

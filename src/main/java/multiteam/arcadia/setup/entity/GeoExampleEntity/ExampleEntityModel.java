@@ -1,8 +1,8 @@
 package multiteam.arcadia.setup.entity.GeoExampleEntity;
 
+import multiteam.arcadia.ArcadiaMod;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.ResourceLocation;
-import software.bernie.geckolib3.GeckoLib;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
@@ -12,17 +12,17 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 public class ExampleEntityModel extends AnimatedGeoModel {
     @Override
     public ResourceLocation getAnimationFileLocation(Object entity) {
-        return new ResourceLocation(GeckoLib.ModID, "animations/entity/aero_gel.animation.json");
+        return new ResourceLocation(ArcadiaMod.MOD_ID, "animations/entity/aero_gel.animation.json");
     }
 
     @Override
     public ResourceLocation getModelLocation(Object entity) {
-        return new ResourceLocation(GeckoLib.ModID, "models/entity/aero_gel.json");
+        return new ResourceLocation(ArcadiaMod.MOD_ID, "models/entity/aero_gel.json");
     }
 
     @Override
     public ResourceLocation getTextureLocation(Object entity) {
-        return new ResourceLocation(GeckoLib.ModID, "textures/entity/aero_gel.png");
+        return new ResourceLocation(ArcadiaMod.MOD_ID, "textures/entity/aero_gel.png");
     }
 
     @Override

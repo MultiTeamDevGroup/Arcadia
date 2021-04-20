@@ -2,6 +2,9 @@ package multiteam.arcadia.setup.entity.GeoExampleEntity;
 
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -40,5 +43,9 @@ public class GeoExampleEntity extends CreatureEntity implements IAnimatable {
     protected void registerGoals() {
         this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         super.registerGoals();
+    }
+
+    public static AttributeModifierMap.MutableAttribute createAttributes() {
+        return MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0D).add(Attributes.MOVEMENT_SPEED, (double)1.5F).add(Attributes.ATTACK_DAMAGE, 5.0D);
     }
 }
