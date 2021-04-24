@@ -69,6 +69,9 @@ public class BottledZap extends Item {
         Entity zapEnty = new ZapEntity(ModEntitys.ZAP.get(), worldIn);
         worldIn.addFreshEntity(zapEnty);
         zapEnty.setPos(pos.getX(), pos.getY(), pos.getZ());
+        if(worldIn.isClientSide){
+            ZapEntity.summonZapParticles(worldIn, pos);
+        }
     }
 
 }

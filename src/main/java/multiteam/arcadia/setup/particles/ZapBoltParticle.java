@@ -23,7 +23,7 @@ public class ZapBoltParticle extends SpriteTexturedParticle {
         this.yStart = y;
         this.zStart = z;
         this.xo = x + motionX;
-        this.yo = y + motionY;
+        this.yo = y + motionY + 1;
         this.zo = z + motionZ;
         this.x = this.xo;
         this.y = this.yo;

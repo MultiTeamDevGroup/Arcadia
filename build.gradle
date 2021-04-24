@@ -108,11 +108,11 @@ dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
     minecraft 'net.minecraftforge:forge:1.16.5-36.1.4'
 
-    compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.1.75:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.1.75")
+    compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.4.88:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.4.88")
 
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.0")
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.0:api")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.1")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.1:api")
 
     compile fg.deobf("multiteam.multicorelib:multicore_lib:1.16.5-0.0.1.1")
 
