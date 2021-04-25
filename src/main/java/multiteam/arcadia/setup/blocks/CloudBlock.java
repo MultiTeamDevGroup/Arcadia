@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -14,6 +15,8 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class CloudBlock extends Block {
 
@@ -71,6 +74,11 @@ public class CloudBlock extends Block {
             worldIn.destroyBlock(pos, false, null, 0);
         }
 
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public boolean skipRendering(BlockState state, BlockState state2, Direction direction) {
+        return state2.is(this) ? true : super.skipRendering(state, state2, direction);
     }
 
 }

@@ -1,32 +1,22 @@
 package multiteam.arcadia.setup;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import multiteam.arcadia.ArcadiaMod;
 import multiteam.arcadia.setup.entity.ModEntitys;
 import multiteam.arcadia.setup.entity.zap.ZapEntity;
 import multiteam.arcadia.setup.world.dimension.ModDimensions;
 import multiteam.multicore_lib.setup.utilities.TeleportTool;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextProperties;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 
