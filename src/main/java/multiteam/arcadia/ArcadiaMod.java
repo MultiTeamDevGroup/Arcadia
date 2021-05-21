@@ -1,16 +1,11 @@
 package multiteam.arcadia;
 
-import multiteam.arcadia.setup.entity.GeoExampleEntity.GeoExampleEntity;
-import multiteam.arcadia.setup.entity.aerogel.AerogelEntity;
 import multiteam.multicore_lib.setup.utilities.*;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.attributes.Attributes;
 import software.bernie.geckolib3.GeckoLib;
 
 import multiteam.arcadia.setup.Registration;
 import multiteam.arcadia.setup.blocks.ModBlocks;
 import multiteam.arcadia.setup.entity.ModEntitys;
-import multiteam.arcadia.setup.entity.zap.ZapEntity;
 import multiteam.arcadia.setup.items.AngelWings;
 import multiteam.arcadia.setup.items.ModItems;
 import multiteam.arcadia.setup.world.biomes.ModBiomeProvider;
@@ -18,7 +13,6 @@ import multiteam.arcadia.setup.world.dimension.CloudRealmChunkGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
