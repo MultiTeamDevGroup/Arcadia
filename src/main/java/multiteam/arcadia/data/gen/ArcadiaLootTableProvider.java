@@ -3,11 +3,13 @@ package multiteam.arcadia.data.gen;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import multiteam.arcadia.main.Registration;
+import multiteam.arcadia.main.block.ModBlockRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.ValidationContext;
@@ -43,6 +45,7 @@ public class ArcadiaLootTableProvider extends LootTableProvider {
     public static class ModBlockLootTables extends BlockLoot {
         @Override
         protected void addTables() {
+            dropOther(ModBlockRegistry.CLOUD_BLOCK.get(), Blocks.AIR);
             //dropSelf(ModBlocks.CARDBOARD_BOX.get());
             //dropSelf(ModBlocks.WITHER_CABBAGE.get());
             //dropSelf(ModBlocks.ICEY_CABBAGE.get());

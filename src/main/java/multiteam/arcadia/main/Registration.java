@@ -1,5 +1,6 @@
 package multiteam.arcadia.main;
 
+import multiteam.arcadia.Arcadia;
 import multiteam.arcadia.main.block.ModBlockRegistry;
 import multiteam.arcadia.main.item.ModItemRegistry;
 import multiteam.multicore_lib.MultiCoreLib;
@@ -12,8 +13,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 
 public class Registration {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MultiCoreLib.MOD_ID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MultiCoreLib.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Arcadia.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Arcadia.MODID);
     //public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, MultiCoreLib.MOD_ID);
     //public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MultiCoreLib.MOD_ID);
 

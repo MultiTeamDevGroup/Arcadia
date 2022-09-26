@@ -1,6 +1,10 @@
 package multiteam.arcadia;
 
 import multiteam.arcadia.main.Registration;
+import multiteam.arcadia.main.block.ModBlockRegistry;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,6 +24,7 @@ public class Arcadia {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::doClientStuff);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -31,6 +36,10 @@ public class Arcadia {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
 
+    }
+
+    private void doClientStuff(final FMLCommonSetupEvent event){
+        ItemBlockRenderTypes.setRenderLayer(ModBlockRegistry.CLOUD_BLOCK.get(), RenderType.cutout());
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)

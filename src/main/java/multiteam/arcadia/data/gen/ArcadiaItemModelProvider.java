@@ -16,14 +16,14 @@ public class ArcadiaItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         //Blockitems
-        //withExistingParent("cabbage_bush", modLoc("block/cabbage_bush"));
+        withExistingParent("cloud_block", modLoc("block/cloud_block"));
 
 
         //Items
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
 
         //Regular Items
-        //builder(itemGenerated, "icon_soldier_modifier_list");
+        //builder(itemGenerated, "cloud_block");
 
     }
 

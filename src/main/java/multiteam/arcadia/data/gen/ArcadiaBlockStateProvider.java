@@ -1,6 +1,7 @@
 package multiteam.arcadia.data.gen;
 
 import multiteam.arcadia.Arcadia;
+import multiteam.arcadia.main.block.ModBlockRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -12,7 +13,7 @@ public class ArcadiaBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        //simpleBlock(ModBlocks.SILKY_CLOTH_BLOCK.get());
+        simpleBlock(ModBlockRegistry.CLOUD_BLOCK.get());
     }
 }
 
