@@ -39,7 +39,7 @@ public class Arcadia {
     }
 
     private void doClientStuff(final FMLCommonSetupEvent event){
-        ItemBlockRenderTypes.setRenderLayer(ModBlockRegistry.CLOUD_BLOCK.get(), RenderType.cutout());
+        //ItemBlockRenderTypes.setRenderLayer(ModBlockRegistry.CLOUD_BLOCK.get(), RenderType.translucent());
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)

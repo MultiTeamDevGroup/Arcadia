@@ -21,6 +21,11 @@ public class CloudBlock extends Block {
     }
 
     @Override
+    public Object getRenderPropertiesInternal() {
+        return super.getRenderPropertiesInternal();
+    }
+
+    @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext collisionContext) {
         return collisionShape;
     }
