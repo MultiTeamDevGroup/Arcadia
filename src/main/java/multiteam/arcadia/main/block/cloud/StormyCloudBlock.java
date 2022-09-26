@@ -16,7 +16,7 @@ public class StormyCloudBlock extends CloudBlock{
     public void specialPuff(Level level, BlockPos currentPos, Entity entitySteppingOnTop) {
         if(!level.isClientSide){
             LightningBolt lightning = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
-            lightning.absMoveTo(currentPos.getX(), currentPos.getY(), currentPos.getZ(), 0, 0.0F);
+            lightning.absMoveTo(currentPos.getX() + 0.5, currentPos.getY(), currentPos.getZ() + 0.5, 0f, 0f); // Fix lightning position.
             level.addFreshEntity(lightning);
         }
     }
