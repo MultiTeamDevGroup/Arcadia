@@ -1,8 +1,0 @@
-{
-    "parent": "minecraft:block/slab_top",
-    "textures": {
-        "top": "arcadia:block/chiseled_nimbus_stonebricks",
-        "bottom": "arcadia:block/chiseled_nimbus_stonebricks",
-        "side": "arcadia:block/chiseled_nimbus_stonebricks"
-    }
-}

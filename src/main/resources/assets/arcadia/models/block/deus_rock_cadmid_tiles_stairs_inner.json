@@ -1,8 +1,0 @@
-{
-    "parent": "minecraft:block/inner_stairs",
-    "textures": {
-        "bottom": "arcadia:block/deus_rock_cadmid_tiles",
-        "top": "arcadia:block/deus_rock_cadmid_tiles",
-        "side": "arcadia:block/deus_rock_cadmid_tiles"
-    }
-}

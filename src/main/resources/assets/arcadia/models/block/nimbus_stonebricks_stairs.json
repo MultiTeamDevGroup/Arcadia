@@ -1,8 +1,0 @@
-{
-    "parent": "minecraft:block/stairs",
-    "textures": {
-        "bottom": "arcadia:block/nimbus_stonebricks",
-        "top": "arcadia:block/nimbus_stonebricks",
-        "side": "arcadia:block/nimbus_stonebricks"
-    }
-}

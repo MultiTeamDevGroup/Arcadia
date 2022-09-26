@@ -1,6 +1,0 @@
-{
-  "parent": "arcadia:block/template_hanging_lantern",
-  "textures": {
-    "lantern": "arcadia:block/zap_lantern"
-  }
-}

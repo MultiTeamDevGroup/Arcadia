@@ -1,6 +1,6 @@
 
 ![Arcadia Logo](https://raw.githubusercontent.com/Laz-The-Artist/Arcadia/main/src/main/resources/arcadia_logo_transparent.png)
-### for Forge 1.16.5 - by MultiTeam
+### for Forge 1.19.2 - by MultiTeam
 
 ## Credits
 - LazTheArtist [Code - Textures & Models]

@@ -1,8 +1,0 @@
-{
-    "parent": "minecraft:block/slab_top",
-    "textures": {
-        "top": "arcadia:block/polished_deus_rock",
-        "bottom": "arcadia:block/polished_deus_rock",
-        "side": "arcadia:block/polished_deus_rock"
-    }
-}
