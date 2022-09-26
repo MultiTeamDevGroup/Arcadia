@@ -33,20 +33,25 @@ public class CloudBlock extends Block {
     }
 
     public void puff(Level level, BlockPos currentPos, Entity entitySteppingOnTop) {
-        //TODO puff
         if(level.isClientSide){
+            //TODO particle and sound of cloud puff
             //spawn particles
             //play sound
         }else{
             if(entitySteppingOnTop instanceof Player){
                 Player player = (Player) entitySteppingOnTop;
                 if(!player.isCrouching()){
+                    specialPuff(level, currentPos, entitySteppingOnTop);
                     level.destroyBlock(currentPos, true);
                 }
             }else{
+                specialPuff(level, currentPos, entitySteppingOnTop);
                 level.destroyBlock(currentPos, true);
             }
         }
+    }
+
+    public void specialPuff(Level level, BlockPos currentPos, Entity entitySteppingOnTop){
 
     }
 }

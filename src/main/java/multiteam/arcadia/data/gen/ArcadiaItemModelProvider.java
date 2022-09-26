@@ -17,6 +17,7 @@ public class ArcadiaItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         //Blockitems
         withExistingParent("cloud_block", modLoc("block/cloud_block"));
+        withExistingParent("stormy_cloud_block", modLoc("block/stormy_cloud_block"));
 
 
         //Items

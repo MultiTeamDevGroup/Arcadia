@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "arcadia:block/grassy_silver_stone"
+      },
+      {
+        "model": "arcadia:block/grassy_silver_stone"
+      },
+      {
+        "model": "arcadia:block/grassy_silver_stone",
+        "y": 180
+      },
+      {
+        "model": "arcadia:block/grassy_silver_stone",
+        "y": 180
+      }
+    ]
+  }
+}

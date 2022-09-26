@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "arcadia:block/zap_lantern"
+    },
+    "hanging=true": {
+      "model": "arcadia:block/zap_lantern_hanging"
+    }
+  }
+}

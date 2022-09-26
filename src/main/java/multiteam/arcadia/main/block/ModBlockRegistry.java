@@ -2,6 +2,7 @@ package multiteam.arcadia.main.block;
 
 import multiteam.arcadia.main.Registration;
 import multiteam.arcadia.main.block.cloud.CloudBlock;
+import multiteam.arcadia.main.block.cloud.StormyCloudBlock;
 import multiteam.arcadia.main.item.ModItemRegistry;
 import multiteam.multicore_lib.setup.utilities.generic.RegistrationTool;
 import net.minecraft.core.BlockPos;
@@ -19,6 +20,7 @@ public class ModBlockRegistry {
     public static final Material CLOUD_MATERIAL = (new Material(MaterialColor.NONE, false, false, false, false, false, false, Material.ICE.getPushReaction()));
 
     public static final RegistryObject<Block> CLOUD_BLOCK = RegistrationTool.registerWithItem("cloud_block", () -> new CloudBlock(BlockBehaviour.Properties.of(CLOUD_MATERIAL).strength(0, 0).sound(SoundType.WOOL).emissiveRendering(ModBlockRegistry::always).isViewBlocking(ModBlockRegistry::never).noCollission(), true), new Item.Properties().tab(ModItemRegistry.ARCADIA_ITEM_GROUP), Registration.BLOCKS, Registration.ITEMS);
+    public static final RegistryObject<Block> CLOUD_BLOCK_STORMY = RegistrationTool.registerWithItem("stormy_cloud_block", () -> new StormyCloudBlock(BlockBehaviour.Properties.of(CLOUD_MATERIAL).strength(0, 0).sound(SoundType.WOOL).emissiveRendering(ModBlockRegistry::always).isViewBlocking(ModBlockRegistry::never).noCollission(), true), new Item.Properties().tab(ModItemRegistry.ARCADIA_ITEM_GROUP), Registration.BLOCKS, Registration.ITEMS);
 
     public static void register(){}
 
