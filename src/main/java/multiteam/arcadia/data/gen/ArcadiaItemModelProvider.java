@@ -19,6 +19,9 @@ public class ArcadiaItemModelProvider extends ItemModelProvider {
         withExistingParent("cloud_block", modLoc("block/cloud_block"));
         withExistingParent("cloud_block_stormy", modLoc("block/cloud_block_stormy"));
         withExistingParent("cloud_block_jelly", modLoc("block/cloud_block_jelly"));
+        withExistingParent("cloud_block_purple", modLoc("block/cloud_block_purple"));
+        withExistingParent("cloud_block_silver", modLoc("block/cloud_block_silver"));
+        withExistingParent("cloud_block_gold", modLoc("block/cloud_block_gold"));
 
 
         //Items

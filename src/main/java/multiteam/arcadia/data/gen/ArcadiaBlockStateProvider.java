@@ -20,6 +20,9 @@ public class ArcadiaBlockStateProvider extends BlockStateProvider {
         simpleBlockWithRenderType(ModBlockRegistry.CLOUD_BLOCK.get(), "translucent");
         simpleBlockWithRenderType(ModBlockRegistry.CLOUD_BLOCK_STORMY.get(), "translucent");
         simpleBlockWithRenderType(ModBlockRegistry.CLOUD_BLOCK_JELLY.get(), "translucent");
+        simpleBlockWithRenderType(ModBlockRegistry.CLOUD_BLOCK_PURPLE.get(), "translucent");
+        simpleBlockWithRenderType(ModBlockRegistry.CLOUD_BLOCK_SILVER.get(), "translucent");
+        simpleBlockWithRenderType(ModBlockRegistry.CLOUD_BLOCK_GOLD.get(), "translucent");
     }
 
     public void simpleBlockWithRenderType(Block block, String renderType) {

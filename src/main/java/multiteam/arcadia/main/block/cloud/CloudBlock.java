@@ -19,14 +19,14 @@ import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 public class CloudBlock extends Block {
-    public final boolean puffsEasily;
+    public final boolean poofsEasily;
     public final RegistryObject<SimpleParticleType> cloudParticle;
 
     private final VoxelShape collisionShape = Block.box(0.1D, 0.1D, 0.1D, 15.9D, 15.9D, 15.9D);
 
-    public CloudBlock(Properties properties, boolean puffsEasily, RegistryObject<SimpleParticleType> cloudParticle) {
+    public CloudBlock(Properties properties, boolean poofsEasily, RegistryObject<SimpleParticleType> cloudParticle) {
         super(properties);
-        this.puffsEasily = puffsEasily;
+        this.poofsEasily = poofsEasily;
         this.cloudParticle = cloudParticle;
     }
 
@@ -36,8 +36,15 @@ public class CloudBlock extends Block {
     }
 
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entitySteppingOnTop) {
-        if(puffsEasily){
-            this.poof(level, pos, entitySteppingOnTop);
+        if(poofsEasily){
+            if(entitySteppingOnTop instanceof Player player){
+                if(!player.isCrouching()){
+                    this.poof(level, pos, entitySteppingOnTop);
+                }
+            }else{
+                this.poof(level, pos, entitySteppingOnTop);
+            }
+
         }
     }
 
@@ -57,16 +64,8 @@ public class CloudBlock extends Block {
             }
             level.playSound((Player)null, currentPos.getX(), currentPos.getY(), currentPos.getZ(), SoundEvents.WOOL_BREAK, SoundSource.BLOCKS, 0.5F, 0.4F);
         }else{
-            if(entitySteppingOnTop instanceof Player){
-                Player player = (Player) entitySteppingOnTop;
-                if(!player.isCrouching()){
-                    specialPuff(level, currentPos, entitySteppingOnTop);
-                    level.destroyBlock(currentPos, true);
-                }
-            }else{
-                specialPuff(level, currentPos, entitySteppingOnTop);
-                level.destroyBlock(currentPos, true);
-            }
+            specialPuff(level, currentPos, entitySteppingOnTop);
+            level.destroyBlock(currentPos, true);
         }
     }
 

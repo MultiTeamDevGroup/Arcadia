@@ -1,4 +1,7 @@
-// 1.19.2	2022-10-01T16:35:46.3458576	LootTables
+// 1.19.2	2022-10-01T22:37:47.2438043	LootTables
 2b2a4bde1a1c86393b28fa3ff9b81ef1ddeed22d data/arcadia/loot_tables/blocks/cloud_block.json
+2b2a4bde1a1c86393b28fa3ff9b81ef1ddeed22d data/arcadia/loot_tables/blocks/cloud_block_gold.json
 2b2a4bde1a1c86393b28fa3ff9b81ef1ddeed22d data/arcadia/loot_tables/blocks/cloud_block_jelly.json
+2b2a4bde1a1c86393b28fa3ff9b81ef1ddeed22d data/arcadia/loot_tables/blocks/cloud_block_purple.json
+2b2a4bde1a1c86393b28fa3ff9b81ef1ddeed22d data/arcadia/loot_tables/blocks/cloud_block_silver.json
 2b2a4bde1a1c86393b28fa3ff9b81ef1ddeed22d data/arcadia/loot_tables/blocks/cloud_block_stormy.json

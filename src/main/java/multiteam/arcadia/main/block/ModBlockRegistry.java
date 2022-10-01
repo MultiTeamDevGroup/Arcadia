@@ -1,9 +1,7 @@
 package multiteam.arcadia.main.block;
 
 import multiteam.arcadia.main.Registration;
-import multiteam.arcadia.main.block.cloud.CloudBlock;
-import multiteam.arcadia.main.block.cloud.JellyCloudBlock;
-import multiteam.arcadia.main.block.cloud.StormyCloudBlock;
+import multiteam.arcadia.main.block.cloud.*;
 import multiteam.arcadia.main.item.ModItemRegistry;
 import multiteam.arcadia.main.particles.ModParticleRegistry;
 import multiteam.multicore_lib.setup.utilities.generic.RegistrationTool;
@@ -24,6 +22,9 @@ public class ModBlockRegistry {
     public static final RegistryObject<Block> CLOUD_BLOCK = RegistrationTool.registerWithItem("cloud_block", () -> new CloudBlock(BlockBehaviour.Properties.of(CLOUD_MATERIAL, MaterialColor.TERRACOTTA_WHITE).strength(0, 0).sound(SoundType.WOOL).emissiveRendering(ModBlockRegistry::always).isViewBlocking(ModBlockRegistry::never).noCollission(), true, ModParticleRegistry.CLOUD_PARTICLE), new Item.Properties().tab(ModItemRegistry.ARCADIA_ITEM_GROUP), Registration.BLOCKS, Registration.ITEMS);
     public static final RegistryObject<Block> CLOUD_BLOCK_STORMY = RegistrationTool.registerWithItem("cloud_block_stormy", () -> new StormyCloudBlock(BlockBehaviour.Properties.of(CLOUD_MATERIAL, MaterialColor.TERRACOTTA_BLACK).strength(0, 0).sound(SoundType.WOOL).emissiveRendering(ModBlockRegistry::always).isViewBlocking(ModBlockRegistry::never).noCollission(), true, ModParticleRegistry.CLOUD_PARTICLE_STORMY), new Item.Properties().tab(ModItemRegistry.ARCADIA_ITEM_GROUP), Registration.BLOCKS, Registration.ITEMS);
     public static final RegistryObject<Block> CLOUD_BLOCK_JELLY = RegistrationTool.registerWithItem("cloud_block_jelly", () -> new JellyCloudBlock(BlockBehaviour.Properties.of(CLOUD_MATERIAL, MaterialColor.COLOR_LIGHT_GREEN).strength(0, 0).sound(SoundType.WOOL).emissiveRendering(ModBlockRegistry::always).isViewBlocking(ModBlockRegistry::never).noCollission(), true, ModParticleRegistry.CLOUD_PARTICLE_JELLY), new Item.Properties().tab(ModItemRegistry.ARCADIA_ITEM_GROUP), Registration.BLOCKS, Registration.ITEMS);
+    public static final RegistryObject<Block> CLOUD_BLOCK_PURPLE = RegistrationTool.registerWithItem("cloud_block_purple", () -> new PurpleCloudBlock(BlockBehaviour.Properties.of(CLOUD_MATERIAL, MaterialColor.COLOR_PURPLE).strength(0, 0).sound(SoundType.WOOL).emissiveRendering(ModBlockRegistry::always).isViewBlocking(ModBlockRegistry::never).noCollission(), true, ModParticleRegistry.CLOUD_PARTICLE_PURPLE), new Item.Properties().tab(ModItemRegistry.ARCADIA_ITEM_GROUP), Registration.BLOCKS, Registration.ITEMS);
+    public static final RegistryObject<Block> CLOUD_BLOCK_SILVER = RegistrationTool.registerWithItem("cloud_block_silver", () -> new SilverCloudBlock(BlockBehaviour.Properties.of(CLOUD_MATERIAL, MaterialColor.COLOR_LIGHT_GRAY).strength(0, 0).sound(SoundType.WOOL).emissiveRendering(ModBlockRegistry::always).isViewBlocking(ModBlockRegistry::never).noCollission(), true, ModParticleRegistry.CLOUD_PARTICLE_SILVER), new Item.Properties().tab(ModItemRegistry.ARCADIA_ITEM_GROUP), Registration.BLOCKS, Registration.ITEMS);
+    public static final RegistryObject<Block> CLOUD_BLOCK_GOLD = RegistrationTool.registerWithItem("cloud_block_gold", () -> new GoldCloudBlock(BlockBehaviour.Properties.of(CLOUD_MATERIAL, MaterialColor.GOLD).strength(0, 0).sound(SoundType.WOOL).emissiveRendering(ModBlockRegistry::always).isViewBlocking(ModBlockRegistry::never).noCollission(), true, ModParticleRegistry.CLOUD_PARTICLE_GOLD), new Item.Properties().tab(ModItemRegistry.ARCADIA_ITEM_GROUP), Registration.BLOCKS, Registration.ITEMS);
 
     public static void register(){}
 
