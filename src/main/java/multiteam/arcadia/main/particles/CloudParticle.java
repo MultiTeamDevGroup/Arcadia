@@ -11,9 +11,9 @@ public class CloudParticle extends TextureSheetParticle {
     protected CloudParticle(ClientLevel level, double posX, double posY, double posZ, SpriteSet spriteSet, double dx, double dy, double dz) {
         super(level, posX, posY, posZ, dx, dy, dz);
 
-        this.friction = 0.8F;
-        this.quadSize *= 0.85F;
-        this.lifetime = 40;
+        this.friction = 0.94F;
+        this.quadSize *= 0.90F;
+        this.lifetime = 120;
         this.setSpriteFromAge(spriteSet);
         this.rCol = 1f;
         this.gCol = 1f;

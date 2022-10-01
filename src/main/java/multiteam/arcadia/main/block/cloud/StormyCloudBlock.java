@@ -1,15 +1,17 @@
 package multiteam.arcadia.main.block.cloud;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.RegistryObject;
 
 public class StormyCloudBlock extends CloudBlock{
 
-    public StormyCloudBlock(Properties properties, boolean puffsEasily) {
-        super(properties, puffsEasily);
+    public StormyCloudBlock(Properties properties, boolean puffsEasily, RegistryObject<SimpleParticleType> cloudParticle) {
+        super(properties, puffsEasily, cloudParticle);
     }
 
     @Override
