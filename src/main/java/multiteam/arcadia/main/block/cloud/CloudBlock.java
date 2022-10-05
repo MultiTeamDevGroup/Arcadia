@@ -11,6 +11,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
@@ -48,11 +49,6 @@ public class CloudBlock extends Block {
         }
     }
 
-    @Override
-    public void fallOn(Level p_152426_, BlockState p_152427_, BlockPos p_152428_, Entity p_152429_, float p_152430_) {
-        super.fallOn(p_152426_, p_152427_, p_152428_, p_152429_, p_152430_);
-    }
-
     public void poof(Level level, BlockPos currentPos, Entity entitySteppingOnTop) {
         if(level.isClientSide){
             for (int ix = 0; ix < 5; ix++) {
@@ -76,5 +72,19 @@ public class CloudBlock extends Block {
     @OnlyIn(Dist.CLIENT)
     public boolean skipRendering(@NotNull BlockState state, BlockState state2, @NotNull Direction direction) {
         return state2.is(this) || super.skipRendering(state, state2, direction);
+    }
+
+    @Override
+    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+        if(level.isClientSide){
+            for (int ix = 0; ix < 2; ix++) {
+                for (int iy = 0; iy < 2; iy++) {
+                    for (int iz = 0; iz < 2; iz++) {
+                        level.addParticle(this.cloudParticle.get(), pos.getX()+((ix*8)*0.1), pos.getY()+((iy*8)*0.1), pos.getZ()+((iz*8)*0.1), (level.random.nextIntBetweenInclusive(-10, 10))*0.1, (level.random.nextIntBetweenInclusive(-10, 10))*0.1, (level.random.nextIntBetweenInclusive(-10, 10))*0.1);
+                    }
+                }
+            }
+        }
+        super.playerWillDestroy(level, pos, state, player);
     }
 }
