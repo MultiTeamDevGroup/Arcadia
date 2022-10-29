@@ -51,6 +51,7 @@ public class ArcadiaLootTableProvider extends LootTableProvider {
             dropOther(ModBlockRegistry.CLOUD_BLOCK_PURPLE.get(), Blocks.AIR);
             dropOther(ModBlockRegistry.CLOUD_BLOCK_SILVER.get(), Blocks.AIR);
             dropOther(ModBlockRegistry.CLOUD_BLOCK_GOLD.get(), Blocks.AIR);
+            dropOther(ModBlockRegistry.CLOUD_BLOCK_ANGRY.get(), Blocks.AIR);
             //dropSelf(ModBlocks.CARDBOARD_BOX.get());
             //dropSelf(ModBlocks.WITHER_CABBAGE.get());
             //dropSelf(ModBlocks.ICEY_CABBAGE.get());

@@ -1,11 +1,13 @@
-// 1.19.2	2022-10-01T22:37:47.2487991	Block States: arcadia
+// 1.19.2	2022-10-29T12:35:47.9490849	Block States: arcadia
 154884f47636868d2b387c142cdb0c895eb07dc9 assets/arcadia/blockstates/cloud_block.json
+8194a2dbc79c162bf9893226e084764ae43e9e4b assets/arcadia/blockstates/cloud_block_angry.json
 9089d1e9c974e7aa3dd6e3c5a58f9e44f7947894 assets/arcadia/blockstates/cloud_block_gold.json
 646c771e20c9577bcb525c8088cf4112a062b108 assets/arcadia/blockstates/cloud_block_jelly.json
 64c9498488a3bc31dc79ad4c8a83e6038b610840 assets/arcadia/blockstates/cloud_block_purple.json
 7314ef17d8ff12afea3e56fbe8d7a13a3a8d5754 assets/arcadia/blockstates/cloud_block_silver.json
 e699f5d03b0c2e9712cbc78c9869b4addf0b5a77 assets/arcadia/blockstates/cloud_block_stormy.json
 ee823fc0dcd87b403595907cbf61ec1daeb05d8d assets/arcadia/models/block/cloud_block.json
+fac3fb2ca2eda50a30b8f9582577a075a6ac1344 assets/arcadia/models/block/cloud_block_angry.json
 18b11da22ef009d59602f5d59944a9809dd9e063 assets/arcadia/models/block/cloud_block_gold.json
 3d19a6614686164925297d481669f38d3d8a36ae assets/arcadia/models/block/cloud_block_jelly.json
 a82cf2100df27149e7561a05984db635a0e46a5e assets/arcadia/models/block/cloud_block_purple.json
