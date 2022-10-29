@@ -7,6 +7,13 @@
   "item.arcadia.cloudy_paradise_disc": "Arcadia Music Disc",
   "item.arcadia.winged_disc": "Arcadia Music Disc",
   "item.arcadia.bottled_zap": "Bottle o' Zap",
+  "item.arcadia.cloud_vial": "Cloud Vial",
+  "item.arcadia.cloud_vial_stormy": "Stormy Cloud Vial",
+  "item.arcadia.cloud_vial_jelly": "Jelly Cloud Vial",
+  "item.arcadia.cloud_vial_purple": "Purple Cloud Vial",
+  "item.arcadia.cloud_vial_silver": "Silver Cloud Vial",
+  "item.arcadia.cloud_vial_gold": "Gold Cloud Vial",
+  "item.arcadia.cloud_vial_angry": "Angry Cloud Vial",
 
   "MOD BLOCKS": "BLOCKS",
   "block.arcadia.cloud_block": "Cloud Block",
@@ -61,5 +68,12 @@
 
   "MOD MISC": "MISC",
   "itemGroup.arcadia_items": "Arcadia",
-  "message.arcadia.action_bar.entering_dimension": "Entering Dimension - Cloud Realms"
+  "message.arcadia.action_bar.entering_dimension": "Entering Dimension - Cloud Realms",
+  "tooltip.arcadia.cloud_vial": "Aero Attack - Wind Ring",
+  "tooltip.arcadia.cloud_vial_stormy": "Aero Attack - Storm Surround",
+  "tooltip.arcadia.cloud_vial_jelly": "Aero Attack - Re-bounce",
+  "tooltip.arcadia.cloud_vial_purple": "Aero Attack - Slow React",
+  "tooltip.arcadia.cloud_vial_silver": "Aero Spirit - Silver Scare",
+  "tooltip.arcadia.cloud_vial_gold": "Aero Spirit - Hasteful Soul",
+  "tooltip.arcadia.cloud_vial_angry": "Aero Attack - Self Destruct"
 }

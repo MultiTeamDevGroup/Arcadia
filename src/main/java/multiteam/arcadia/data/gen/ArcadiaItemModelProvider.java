@@ -29,7 +29,13 @@ public class ArcadiaItemModelProvider extends ItemModelProvider {
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
 
         //Regular Items
-        //builder(itemGenerated, "cloud_block");
+        builder(itemGenerated, "cloud_vial");
+        builder(itemGenerated, "cloud_vial_stormy");
+        builder(itemGenerated, "cloud_vial_jelly");
+        builder(itemGenerated, "cloud_vial_purple");
+        builder(itemGenerated, "cloud_vial_silver");
+        builder(itemGenerated, "cloud_vial_gold");
+        builder(itemGenerated, "cloud_vial_angry");
 
     }
 

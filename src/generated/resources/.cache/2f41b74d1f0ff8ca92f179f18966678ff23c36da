@@ -1,4 +1,4 @@
-// 1.19.2	2022-10-29T12:35:47.9670725	Item Models: arcadia
+// 1.19.2	2022-10-29T13:29:55.1607797	Item Models: arcadia
 d3dbf33be898ca773514f7c7a581eee556486561 assets/arcadia/models/item/cloud_block.json
 94b54408b3de10e4757c9b4bf7dde9060a7faf62 assets/arcadia/models/item/cloud_block_angry.json
 663b779c2685bbf6403d89577e8e81cd11fdd650 assets/arcadia/models/item/cloud_block_gold.json
@@ -6,3 +6,10 @@ d3dbf33be898ca773514f7c7a581eee556486561 assets/arcadia/models/item/cloud_block.
 c76458ba514174bcb2494f2fe848d62886218b9b assets/arcadia/models/item/cloud_block_purple.json
 c6116db5da1cbb74bd085231f59d29b388969ffc assets/arcadia/models/item/cloud_block_silver.json
 896d86b87093c4ecd30d3d8b56ed02b8b3cb6642 assets/arcadia/models/item/cloud_block_stormy.json
+35c16756cd3c7318e0c3a858b48cf1e1bee6d814 assets/arcadia/models/item/cloud_vial.json
+b931bb0fe202a6a1351dc7147abb249cfc060cd5 assets/arcadia/models/item/cloud_vial_angry.json
+daa06ea93f7e9ddb96a462115fcafb813c0501de assets/arcadia/models/item/cloud_vial_gold.json
+88ba0dc29b728df87e898e2dccc87006d60f1f95 assets/arcadia/models/item/cloud_vial_jelly.json
+a18e3baa21ba496f3ddb8d5d5fd22cbf8dc352fe assets/arcadia/models/item/cloud_vial_purple.json
+7a435a7d1172198d70ab858dbdc3b40370e20e00 assets/arcadia/models/item/cloud_vial_silver.json
+29deeee0362574ca7c1935cb2942e677a203aa61 assets/arcadia/models/item/cloud_vial_stormy.json
